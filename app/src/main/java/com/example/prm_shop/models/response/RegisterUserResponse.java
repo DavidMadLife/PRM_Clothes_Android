@@ -1,11 +1,21 @@
-package com.example.prm_shop.models.request;
+package com.example.prm_shop.models.response;
 
-public class RegisterUserRequest {
+public class RegisterUserResponse {
+    private int memberId;
     private String userName;
     private String email;
     private String phone;
-    private String password;
     private String address;
+    private int roleId;
+    private String status;
+
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
+    }
 
     public String getUserName() {
         return userName;
@@ -31,19 +41,27 @@ public class RegisterUserRequest {
         this.phone = phone;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getAddress() {
         return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

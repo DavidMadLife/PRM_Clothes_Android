@@ -1,13 +1,17 @@
 package com.example.prm_shop;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.prm_shop.R;
+
+import com.example.prm_shop.activities.BlankActivity;
+import com.example.prm_shop.activities.RegisterActivity;
 import com.example.prm_shop.models.request.LoginView;
 import com.example.prm_shop.models.response.TokenResponse;
 import com.example.prm_shop.network.ApiClient;
@@ -21,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText emailEditText;
     private EditText passwordEditText;
     private Button loginButton;
+    private TextView registerLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.editTextEmail);
         passwordEditText = findViewById(R.id.editTextPassword);
         loginButton = findViewById(R.id.buttonLogin);
+        registerLink = findViewById(R.id.textViewRegisterLink);
 
         memberService = ApiClient.getRetrofitInstance().create(MemberService.class);
 
@@ -37,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loginUser();
+            }
+        });
+
+        registerLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }

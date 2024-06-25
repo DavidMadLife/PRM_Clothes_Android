@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BlankActivity"></activity>
+        <activity android:name=".activities.BlankActivity"></activity>
+        <activity android:name=".activities.RegisterActivity"></activity>
     </application>
 
 </manifest>
