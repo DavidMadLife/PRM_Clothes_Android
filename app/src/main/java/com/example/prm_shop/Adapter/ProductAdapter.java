@@ -1,6 +1,8 @@
 package com.example.prm_shop.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prm_shop.R;
+import com.example.prm_shop.activities.ProductDetailActivity;
 import com.example.prm_shop.models.response.ProductResponse;
 import com.squareup.picasso.Picasso;
 
@@ -38,13 +41,26 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return new ProductViewHolder(view);
     }
 
+    // Inside ProductAdapter
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         ProductResponse product = productList.get(position);
         holder.productName.setText(product.getProductName());
-        holder.productPrice.setText(String.valueOf(product.getUnitPrice()));
+        holder.productPrice.setText("Price: " + product.getUnitPrice() + "$");
         Picasso.get().load(product.getImg()).into(holder.productImage);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductDetailActivity.class);
+                intent.putExtra("product", product);
+                context.startActivity(intent);
+            }
+        });
     }
+
+
 
     @Override
     public int getItemCount() {
