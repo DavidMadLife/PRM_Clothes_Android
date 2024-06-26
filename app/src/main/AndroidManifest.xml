@@ -23,6 +23,8 @@
         </activity>
         <activity android:name=".activities.BlankActivity"></activity>
         <activity android:name=".activities.RegisterActivity"></activity>
+        <activity android:name=".activities.ProductActivity" />
+
     </application>
 
 </manifest>

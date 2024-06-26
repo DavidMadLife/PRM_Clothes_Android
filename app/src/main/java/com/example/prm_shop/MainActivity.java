@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.prm_shop.activities.BlankActivity;
+import com.example.prm_shop.activities.ProductActivity;
 import com.example.prm_shop.activities.RegisterActivity;
 import com.example.prm_shop.models.request.LoginView;
 import com.example.prm_shop.models.response.TokenResponse;
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if (response.isSuccessful()) {
-                    Intent intent = new Intent(MainActivity.this, BlankActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ProductActivity.class);
                     startActivity(intent);
                     finish();  // Optional: close the login activity
                 } else {

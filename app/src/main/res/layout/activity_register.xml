@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="User Name" />
+        android:hint="User Name"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -18,7 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextUserName"
         android:layout_margin="16dp"
-        android:hint="Email" />
+        android:hint="Email"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -26,7 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextEmail"
         android:layout_margin="16dp"
-        android:hint="Phone Number" />
+        android:hint="Phone Number"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -35,7 +38,8 @@
         android:layout_below="@id/editTextPhone"
         android:layout_margin="16dp"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editTextAddress"
@@ -43,7 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextPassword"
         android:layout_margin="16dp"
-        android:hint="Address" />
+        android:hint="Address"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/buttonRegister"
