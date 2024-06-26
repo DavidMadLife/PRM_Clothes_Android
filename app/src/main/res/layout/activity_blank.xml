@@ -4,6 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_purple"
     tools:context=".activities.BlankActivity">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Search EditText -->
+        <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Search"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edit_text"
+            android:drawablePadding="8dp"/>
+
+        <!-- Search ImageButton -->
+        <ImageView
+            android:id="@+id/imageSearch"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_search" />
+
+        <!-- Cart Icon -->
+        <ImageView
+            android:id="@+id/imageViewCart"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_cart"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Message Icon -->
+        <ImageView
+            android:id="@+id/imageViewMessage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_message"
+            android:layout_marginEnd="16dp"/>
+
+    </LinearLayout>
+
+    <!-- Middle View -->
+    <View
+        android:id="@+id/middleView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintBottom_toTopOf="@id/footerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@android:color/darker_gray"/>
+
+    <!-- Footer -->
+    <LinearLayout
+        android:id="@+id/footerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Home Button -->
+        <ImageView
+            android:id="@+id/imageHome"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_home"
+            android:layout_weight="1"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Map Button -->
+        <ImageView
+            android:id="@+id/imageNotificate"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_notificate"
+            android:layout_weight="1"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- User Button -->
+        <ImageView
+            android:id="@+id/imageUser"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_user"
+            android:layout_weight="1"
+            android:layout_marginEnd="16dp"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

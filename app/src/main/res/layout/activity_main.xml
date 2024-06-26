@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,8 +20,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imageViewLogo"
         android:layout_margin="16dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_edit_text"
         android:hint="Email"
+        android:padding="12dp"
         android:minHeight="48dp" />
 
     <EditText
@@ -31,9 +31,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextEmail"
         android:layout_margin="16dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_edit_text"
         android:hint="Password"
         android:inputType="textPassword"
+        android:padding="12dp"
         android:minHeight="48dp" />
 
     <Button
@@ -44,14 +45,27 @@
         android:layout_margin="16dp"
         android:text="Login" />
 
+
     <TextView
-        android:id="@+id/textViewRegisterLink"
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonLogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Don't have an account? Register now."
+        android:text="Don't have an account?"
         android:textColor="@android:color/black"
         android:textSize="16sp" />
+    <TextView
+        android:id="@+id/textViewRegisterLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text=" Creat Account "
+        android:textColor="@color/purple"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
 </RelativeLayout>
