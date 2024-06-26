@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prm_shop.MainActivity;
@@ -38,13 +39,22 @@ public class RegisterActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextAddress = findViewById(R.id.editTextAddress);
         buttonRegister = findViewById(R.id.buttonRegister);
-
+        TextView textViewLoginLink = findViewById(R.id.textViewLoginLink);
         memberService = ApiClient.getRetrofitInstance().create(MemberService.class);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 registerUser();
+            }
+        });
+        textViewLoginLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                // Close RegisterActivity and return to the previous activity
             }
         });
     }
