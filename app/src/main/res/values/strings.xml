@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">PRM_Shop</string>
+    <!-- Existing strings -->
+    <string-array name="product_sizes">
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+        <item>XL</item>
+        <item>XXL</item>
+    </string-array>
 </resources>

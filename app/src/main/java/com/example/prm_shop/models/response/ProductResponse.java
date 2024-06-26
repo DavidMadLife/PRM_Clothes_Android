@@ -2,7 +2,9 @@ package com.example.prm_shop.models.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProductResponse {
+import java.io.Serializable;
+
+public class ProductResponse implements Serializable {
     @SerializedName("productId")
     private int productId;
 
