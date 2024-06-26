@@ -22,7 +22,8 @@
         android:layout_below="@id/imageViewLogo"
         android:layout_margin="16dp"
         android:background="@color/white"
-        android:hint="Email" />
+        android:hint="Email"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -30,9 +31,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextEmail"
         android:layout_margin="16dp"
-        android:hint="Password"
         android:background="@color/white"
-        android:inputType="textPassword" />
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/buttonLogin"
