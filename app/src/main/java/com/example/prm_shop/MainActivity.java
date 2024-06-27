@@ -1,6 +1,7 @@
 package com.example.prm_shop;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,9 +11,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.auth0.android.jwt.JWT;
 import com.example.prm_shop.activities.BlankActivity;
-import com.example.prm_shop.activities.ProductActivity;
 import com.example.prm_shop.activities.RegisterActivity;
+import com.example.prm_shop.activities.UserInformationActivity;
+import com.example.prm_shop.models.request.LoginView;
+import com.example.prm_shop.models.response.TokenResponse;
+import com.example.prm_shop.network.ApiClient;
+import com.example.prm_shop.network.MemberService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.auth0.android.jwt.JWT;
+import com.example.prm_shop.activities.RegisterActivity;
+import com.example.prm_shop.activities.UserActivity;
+import com.example.prm_shop.activities.UserInformationActivity;
 import com.example.prm_shop.models.request.LoginView;
 import com.example.prm_shop.models.response.TokenResponse;
 import com.example.prm_shop.network.ApiClient;
@@ -74,9 +99,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if (response.isSuccessful()) {
-                    Intent intent = new Intent(MainActivity.this, ProductActivity.class);
-                    startActivity(intent);
-                    finish();  // Optional: close the login activity
+                    TokenResponse tokenResponse = response.body();
+                    if (tokenResponse != null) {
+                        String token = tokenResponse.getToken();
+                        JWT jwt = new JWT(token);
+                        String userId = jwt.getClaim("memberId").asString(); // Ensure "memberId" is used correctly
+                        String roleId = jwt.getClaim("role").asString();
+
+                        if (userId != null && !userId.isEmpty()) {
+                            int userID = Integer.parseInt(userId);
+
+                            // Lưu token vào SharedPreferences
+                            saveToken(token);
+
+                            // Chuyển sang UserActivity
+                            Intent intent = new Intent(MainActivity.this, BlankActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(MainActivity.this, "User ID is missing", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, "Failed to get token", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Log.d("MainActivity", "Login failed: " + response.message());
                     Toast.makeText(MainActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
@@ -89,5 +134,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void saveToken(String token) {
+        // Lưu token vào SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("TOKEN", token);
+        editor.apply();
     }
 }

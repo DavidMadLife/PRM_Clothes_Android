@@ -21,6 +21,7 @@
 
         <!-- User Information Section -->
         <TextView
+            android:id="@+id/userInfoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="User Information"
