@@ -28,6 +28,9 @@
         <activity android:name=".activities.UserActivity"></activity>
         <activity android:name=".activities.BaseActivity"></activity>
         <activity android:name=".activities.CartActivity"></activity>
+        <activity android:name=".activities.UserInformationActivity"></activity>
+
+
     </application>
 
 </manifest>
