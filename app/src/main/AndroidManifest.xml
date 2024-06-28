@@ -30,6 +30,10 @@
         <activity android:name=".activities.CartActivity"></activity>
         <activity android:name=".activities.UserInformationActivity"></activity>
 
+        <activity android:name=".activities.UpdateUserActivity"></activity>
+        <activity android:name=".activities.ManagePageActivity"></activity>
+
+
 
     </application>
 

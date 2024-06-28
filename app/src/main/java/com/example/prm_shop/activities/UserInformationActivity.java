@@ -1,8 +1,12 @@
 package com.example.prm_shop.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +42,9 @@ public class UserInformationActivity extends AppCompatActivity {
     private int userId; // Changed to int for userId
     private static final String ADMIN = "Admin";
     private static final String CUSTOMER = "Customer";
+    private ImageView imageHome;
+    private Button updateButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,8 @@ public class UserInformationActivity extends AppCompatActivity {
         phoneTextView = findViewById(R.id.phoneTextView);
         addressTextView = findViewById(R.id.addressTextView);
         roleTextView = findViewById(R.id.roleTextView);
+        imageHome = findViewById(R.id.imageHome);
+        updateButton = findViewById(R.id.updateButton);
 
         // Initialize Retrofit service
         memberService = ApiClient.getRetrofitInstance().create(MemberService.class);
@@ -73,6 +82,29 @@ public class UserInformationActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Token not found", Toast.LENGTH_SHORT).show();
         }
+
+        imageHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Quay lại BlankActivity
+                Intent intent = new Intent(UserInformationActivity.this, BlankActivity.class);
+                startActivity(intent);
+                finish(); // Kết thúc UserInformationActivity nếu không cần giữ lại
+            }
+        });
+
+
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInformationActivity.this, UpdateUserActivity.class);
+                intent.putExtra("USER_ID", userId); // Pass user ID to update activity
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
     private void getUserInformation(int userId) { // Changed parameter type to int

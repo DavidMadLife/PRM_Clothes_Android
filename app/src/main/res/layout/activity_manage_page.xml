@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".activities.ManagePageActivity">
+
+    <!-- LinearLayout to group the information cards -->
+
+    <!-- Task bar with icons -->
+
+    <ImageView
+        android:id="@+id/dashboardIcon"
+        android:layout_width="181dp"
+        android:layout_height="83dp"
+        android:src="@drawable/ic_dashboard"
+        app:layout_constraintBottom_toTopOf="@id/linearLayoutCounts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutCounts"
+        android:layout_width="410dp"
+        android:layout_height="583dp"
+        android:layout_marginTop="88dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Active Projects count -->
+        <TextView
+            android:id="@+id/tvActiveProjectsCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:background="@color/light_blue"
+            android:text="Active Projects: 23\n1 New in last 7 days"
+            android:textSize="32sp" />
+
+        <!-- Overdue count -->
+        <TextView
+            android:id="@+id/tvOverdueCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:background="@color/light_green"
+            android:text="Overdue: 12\n7 New in last 7 days"
+            android:textSize="32sp" />
+
+        <!-- Pending count -->
+        <TextView
+            android:id="@+id/tvPendingCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:background="@color/light_red"
+            android:text="Pending: 35\n5 New in last 7 days"
+            android:textSize="32sp" />
+
+        <!-- Meetings count -->
+        <TextView
+            android:id="@+id/tvMeetingsCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:background="@color/light_yellow"
+            android:text="Meetings: None\nNo new Meetings"
+            android:textSize="32sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/imageHome"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_dashboard"
+            android:layout_weight="1"
+            android:background="@color/light_gray"
+            android:layout_marginEnd="0dp"/>
+
+
+        <!-- User Button -->
+        <ImageView
+            android:id="@+id/imageUser"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_users"
+            android:layout_weight="1"
+            android:layout_marginEnd="0dp"/>
+
+        <!-- Product Button -->
+        <ImageView
+            android:id="@+id/imageProduct"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_product"
+            android:layout_weight="1"
+            android:layout_marginEnd="0dp"/>
+
+        <!-- Order Button -->
+        <ImageView
+            android:id="@+id/imageOrder"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_order"
+            android:layout_weight="1"
+            android:layout_marginEnd="0dp"/>
+
+        <!-- Setting Button -->
+        <ImageView
+            android:id="@+id/imageSetting"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="0dp"
+            android:src="@drawable/ic_setting" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
