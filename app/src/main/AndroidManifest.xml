@@ -27,7 +27,8 @@
         <activity android:name=".activities.ProductDetailActivity" />
         <activity android:name=".activities.UserActivity"></activity>
         <activity android:name=".activities.UserInformationActivity"></activity>
-
+        <activity android:name=".activities.UpdateUserActivity"></activity>
+        <activity android:name=".activities.ManagePageActivity"></activity>
     </application>
 
 </manifest>
