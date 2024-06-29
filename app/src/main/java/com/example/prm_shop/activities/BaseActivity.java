@@ -36,6 +36,17 @@ public class BaseActivity extends AppCompatActivity {
                 }
             });
         }
+
+        ImageView imageHome = findViewById(R.id.imageHome);
+        if (imageUser != null) {
+            imageHome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(BaseActivity.this, ProductActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     private void setupHeader() {

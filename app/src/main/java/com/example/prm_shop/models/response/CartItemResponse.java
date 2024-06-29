@@ -6,6 +6,7 @@ public class CartItemResponse {
     private int quantity;
     private double unitPrice;
     private String size;
+    private String img; // Thêm thuộc tính này
 
     // Các phương thức getter và setter
     public int getProductId() {
@@ -46,5 +47,13 @@ public class CartItemResponse {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

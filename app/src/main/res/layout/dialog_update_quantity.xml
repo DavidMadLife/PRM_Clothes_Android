@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Quantity Label -->
+    <TextView
+        android:id="@+id/quantity_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Số Lượng"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp" />
+
+    <!-- Quantity LinearLayout -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/decrement_button"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/quantity_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="1"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/increment_button"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <!-- Size Label -->
+    <TextView
+        android:id="@+id/size_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Size"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp" />
+
+    <!-- Size RadioGroup -->
+    <RadioGroup
+        android:id="@+id/size_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="4dp">
+
+        <RadioButton
+            android:id="@+id/size_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S" />
+
+        <RadioButton
+            android:id="@+id/size_m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M" />
+
+        <RadioButton
+            android:id="@+id/size_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L" />
+
+        <RadioButton
+            android:id="@+id/size_xl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XL" />
+
+        <RadioButton
+            android:id="@+id/size_xxl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XXL" />
+    </RadioGroup>
+</LinearLayout>
