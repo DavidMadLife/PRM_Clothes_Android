@@ -1,33 +1,22 @@
-package com.example.prm_shop.models.request;
+package com.example.prm_shop.models.response;
 
-import com.google.gson.annotations.SerializedName;
-
-public class UpdateUserRequest {
-
-    @SerializedName("userName")
+public class UpdateUserResponse {
+    private int memberId;
     private String userName;
-
-    @SerializedName("email")
     private String email;
-
-    @SerializedName("phone")
     private String phone;
-
-    @SerializedName("address")
     private String address;
+    private int roleId;
+    private String status;
 
-    // Constructors
-    public UpdateUserRequest() {}
-
-    public UpdateUserRequest(String userName, String email, String phone, String address) {
-        this.userName = userName;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-
+    public int getMemberId() {
+        return memberId;
     }
 
-    // Getters and Setters
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -60,5 +49,19 @@ public class UpdateUserRequest {
         this.address = address;
     }
 
+    public int getRoleId() {
+        return roleId;
+    }
 
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

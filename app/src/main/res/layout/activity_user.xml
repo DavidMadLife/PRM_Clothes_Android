@@ -19,6 +19,8 @@
         android:padding="16dp"
         android:gravity="center">
 
+        <!-- Space for Equal Spacing -->
+
         <!-- User Information Section -->
         <TextView
             android:id="@+id/userInfoTextView"
@@ -31,6 +33,9 @@
             android:background="@drawable/rounded_edit_text"
             android:layout_marginBottom="16dp"/>
 
+        <!-- Space for Equal Spacing -->
+
+
         <!-- List Order Section -->
         <TextView
             android:layout_width="match_parent"
@@ -39,7 +44,40 @@
             android:textSize="24sp"
             android:padding="16dp"
             android:gravity="center"
-            android:background="@drawable/rounded_edit_text"/>
+            android:background="@drawable/rounded_edit_text"
+            android:layout_marginBottom="16dp"/>
+
+
+
+        <TextView
+            android:id="@+id/managePageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manage Page"
+            android:textSize="24sp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:background="@drawable/rounded_edit_text"
+            android:visibility="gone"/> <!-- Initially hidden -->
+
+        <!-- Space for Equal Spacing -->
+
+        <ImageView
+            android:id="@+id/logoutImageView"
+            android:layout_width="77dp"
+            android:layout_height="74dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_edit_text"
+            android:onClick="showLogoutConfirmationDialog"
+            android:padding="16dp"
+            android:src="@drawable/ic_log_out"
+            app:layout_constraintBottom_toTopOf="@id/footerLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/red" />
+
 
     </LinearLayout>
 
