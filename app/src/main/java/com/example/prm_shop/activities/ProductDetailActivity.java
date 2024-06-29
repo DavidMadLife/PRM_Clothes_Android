@@ -1,6 +1,7 @@
 package com.example.prm_shop.activities;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +13,24 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.auth0.android.jwt.JWT;
 import com.example.prm_shop.R;
+import com.example.prm_shop.models.request.CartRequest;
 import com.example.prm_shop.models.response.ProductResponse;
+import com.example.prm_shop.network.ApiClient;
+import com.example.prm_shop.network.CartService;
 import com.squareup.picasso.Picasso;
 
-public class ProductDetailActivity extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class ProductDetailActivity extends BaseActivity {
 
     private TextView unitInStock, productName, productPrice, productDescription, quantityTextView;
     private ImageView productImage;
@@ -68,18 +82,95 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
+        Button addToCartButton = findViewById(R.id.add_to_cart_button);
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selectedSizeId = sizeRadioGroup.getCheckedRadioButtonId();
-                if (selectedSizeId == -1) {
-                    Toast.makeText(ProductDetailActivity.this, "Please select a size", Toast.LENGTH_SHORT).show();
-                } else {
-                    RadioButton selectedSizeRadioButton = findViewById(selectedSizeId);
-                    String selectedSize = selectedSizeRadioButton.getText().toString();
-                    Toast.makeText(ProductDetailActivity.this, "Added to cart: " + product.getProductName() + " - Size: " + selectedSize + " - Quantity: " + quantity, Toast.LENGTH_SHORT).show();
-                }
+                addToCart();
             }
         });
+
+
     }
+
+    private void addToCart() {
+        // Lấy token từ SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        String token = sharedPreferences.getString("TOKEN", "");
+
+        // Kiểm tra xem token có tồn tại không
+        if (!token.isEmpty()) {
+            // Giải mã token để lấy memberId
+            JWT jwt = new JWT(token);
+            int memberId = jwt.getClaim("memberId").asInt(); // Đảm bảo "memberId" là key trong token của bạn
+
+            // Lấy productId từ intent hoặc từ đâu đó
+            int productId = product.getProductId(); // Thay thế bằng cách lấy productId từ object ProductResponse
+
+            // Lấy size được chọn từ RadioGroup
+            int checkedRadioButtonId = sizeRadioGroup.getCheckedRadioButtonId();
+            String size = "";
+
+            if (checkedRadioButtonId == -1) {
+                // Nếu không có RadioButton nào được chọn
+                Toast.makeText(this, "Please choose size.", Toast.LENGTH_SHORT).show();
+                return; // Dừng phương thức addToCart() nếu không có size được chọn
+            }else{
+                if (checkedRadioButtonId == R.id.size_s) {
+                    size = "S";
+                } else if (checkedRadioButtonId == R.id.size_m) {
+                    size = "M";
+                } else if (checkedRadioButtonId == R.id.size_l) {
+                    size = "L";
+                } else if (checkedRadioButtonId == R.id.size_xl) {
+                    size = "XL";
+                } else if (checkedRadioButtonId == R.id.size_xxl) {
+                    size = "XXL";
+                }
+            }
+            // Lấy số lượng từ TextView quantity_text_view
+            int quantity = Integer.parseInt(quantityTextView.getText().toString());
+
+            // Tạo đối tượng CartRequest để gửi lên server
+            CartRequest cartRequest = new CartRequest(memberId, productId, quantity, size);
+
+            // Gọi API để thêm vào giỏ hàng
+            CartService cartService = ApiClient.getRetrofitInstance().create(CartService.class);
+            Call<Void> call = cartService.addToCart(cartRequest);
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(ProductDetailActivity.this, "Added to cart successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (response.errorBody() != null) {
+                            try {
+                                // Đọc thông báo lỗi từ errorBody của response
+                                String errorMessage = response.errorBody().string();
+                                // Xử lý để chỉ lấy nội dung thông báo lỗi từ chuỗi JSON
+                                JSONObject jsonObject = new JSONObject(errorMessage);
+                                String message = jsonObject.getString("message");
+
+                                // Hiển thị thông báo lỗi
+                                Toast.makeText(ProductDetailActivity.this, message, Toast.LENGTH_SHORT).show();
+                            } catch (IOException | JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(ProductDetailActivity.this, "Failed to add to cart", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(ProductDetailActivity.this, "Failed to add to cart", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Toast.makeText(ProductDetailActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(this, "Token not found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

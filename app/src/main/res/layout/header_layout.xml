@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:padding="8dp"
     android:gravity="center_vertical"
-    android:background="@color/white">
+    android:background="@drawable/bordered_background">>
 
     <EditText
         android:id="@+id/editTextSearch"

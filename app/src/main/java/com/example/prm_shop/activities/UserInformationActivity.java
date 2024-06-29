@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.auth0.android.jwt.JWT;
 import com.example.prm_shop.R;
 import com.example.prm_shop.models.response.UserResponse;
@@ -16,20 +17,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import com.auth0.android.jwt.JWT;
-import com.example.prm_shop.R;
-import com.example.prm_shop.models.response.UserResponse;
-import com.example.prm_shop.network.ApiClient;
-import com.example.prm_shop.network.MemberService;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class UserInformationActivity extends AppCompatActivity {
 

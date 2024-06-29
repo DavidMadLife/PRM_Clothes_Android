@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.auth0.android.jwt.JWT;
 import com.example.prm_shop.activities.BlankActivity;
+import com.example.prm_shop.activities.CartActivity;
+import com.example.prm_shop.activities.ProductActivity;
 import com.example.prm_shop.activities.RegisterActivity;
 import com.example.prm_shop.activities.UserInformationActivity;
 import com.example.prm_shop.models.request.LoginView;
@@ -113,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                             saveToken(token);
 
                             // Chuyển sang UserActivity
-                            Intent intent = new Intent(MainActivity.this, BlankActivity.class);
+                            Intent intent = new Intent(MainActivity.this, ProductActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
