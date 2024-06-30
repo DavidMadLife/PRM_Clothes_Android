@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.SettingActivity">
 
-    <!-- Middle View -->
-
-    <!-- Footer -->
 
     <ImageView
         android:id="@+id/dashboardIcon"
