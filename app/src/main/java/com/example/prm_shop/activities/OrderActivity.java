@@ -18,6 +18,7 @@ import com.example.prm_shop.network.OrderService;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,7 +28,6 @@ public class OrderActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private OrderAdapter orderAdapter;
     private OrderService orderService;
-
     private int userId;
 
     @Override
@@ -37,6 +37,7 @@ public class OrderActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         orderAdapter = new OrderAdapter(this, new ArrayList<>());
         recyclerView.setAdapter(orderAdapter);
 
@@ -52,39 +53,48 @@ public class OrderActivity extends AppCompatActivity {
             if (userIdStr != null && !userIdStr.isEmpty()) {
                 userId = Integer.parseInt(userIdStr);
 
+                // Gọi service để lấy danh sách đơn hàng
+                getOrderList(userId);
             } else {
                 Toast.makeText(this, "User ID is missing", Toast.LENGTH_SHORT).show();
             }
         } else {
             Toast.makeText(this, "Token not found", Toast.LENGTH_SHORT).show();
         }
-
-        // Gọi service để lấy danh sách đơn hàng
-        Call<List<OrderResponse>> call = orderService.getOrdersByMemberId(userId);
-
-        Log.d("user", String.valueOf(userId));
-        call.enqueue(new Callback<List<OrderResponse>>() {
-            @Override
-            public void onResponse(Call<List<OrderResponse>> call, Response<List<OrderResponse>> response) {
-                if (response.isSuccessful()) {
-                    List<OrderResponse> orders = response.body();
-                    orderAdapter.setData(orders);
-                } else {
-                    // Xử lý khi không thành công
-                    Log.e("OrderActivity", "Không thể lấy danh sách đơn hàng");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<OrderResponse>> call, Throwable t) {
-                // Xử lý khi có lỗi kết nối
-                Log.e("OrderActivity", "Lỗi kết nối: " + t.getMessage());
-            }
-        });
     }
 
     private String getToken() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         return sharedPreferences.getString("TOKEN", "");
+    }
+
+    private void getOrderList(int userId) {
+        Call<List<OrderResponse>> call = orderService.getOrdersByMemberId(userId);
+        Log.d("OrderActivity", "Fetching orders for user ID: " + userId);
+        call.enqueue(new Callback<List<OrderResponse>>() {
+            @Override
+            public void onResponse(Call<List<OrderResponse>> call, Response<List<OrderResponse>> response) {
+                if (response.isSuccessful()) {
+                    List<OrderResponse> orders = response.body();
+                    if (orders != null) {
+                        orderAdapter.setData(orders);
+                        Log.d("OrderActivity", "Orders loaded: " + orders.size());
+                    } else {
+                        Log.d("OrderActivity", "No orders found");
+                        Toast.makeText(OrderActivity.this, "No orders found", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.e("OrderActivity", "Failed to fetch orders");
+                    Toast.makeText(OrderActivity.this, "Failed to fetch orders", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<OrderResponse>> call, Throwable t) {
+                Log.e("OrderActivity", "Error fetching orders: " + t.toString());
+                Toast.makeText(OrderActivity.this, "Error fetching orders: " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+        });
     }
 }
