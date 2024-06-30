@@ -183,7 +183,7 @@ public class UpdateUserActivity extends AppCompatActivity {
     }
 
     private void navigateToBlankActivity() {
-        Intent intent = new Intent(UpdateUserActivity.this, BlankActivity.class);
+        Intent intent = new Intent(UpdateUserActivity.this, ProductActivity.class);
         startActivity(intent);
         finish();
     }
