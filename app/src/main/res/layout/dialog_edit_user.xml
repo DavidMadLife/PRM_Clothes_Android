@@ -3,35 +3,93 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+
     android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Name"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"/>
 
     <EditText
         android:id="@+id/editUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="User Name" />
+        android:hint="User Name"
+        android:textSize="16sp"
+        android:background="@drawable/rounded_edit_text"
+        android:padding="12dp"
+        android:inputType="text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
 
     <EditText
         android:id="@+id/editEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email" />
+        android:hint="Email"
+        android:textSize="16sp"
+        android:background="@drawable/rounded_edit_text"
+        android:padding="12dp"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
 
     <EditText
         android:id="@+id/editPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Phone" />
+        android:hint="Phone"
+        android:textSize="16sp"
+        android:background="@drawable/rounded_edit_text"
+        android:padding="12dp"
+        android:inputType="phone"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
 
     <EditText
         android:id="@+id/editAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Address" />
+        android:hint="Address"
+        android:textSize="16sp"
+        android:background="@drawable/rounded_edit_text"
+        android:padding="12dp"
+        android:inputType="textPostalAddress"/>
 
     <Button
         android:id="@+id/buttonUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update" />
+        android:text="Update"
+        android:textColor="@android:color/white"
+        android:background="@color/purple"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"/>
+
 </LinearLayout>
