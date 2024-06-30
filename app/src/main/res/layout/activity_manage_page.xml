@@ -42,10 +42,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:gravity="center"
             android:background="@color/light_blue"
+            android:gravity="center"
             android:text="Active Projects: 23\n1 New in last 7 days"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            tools:ignore="TextContrastCheck" />
 
         <!-- Overdue count -->
         <TextView
@@ -64,10 +65,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:gravity="center"
             android:background="@color/light_red"
+            android:gravity="center"
             android:text="Pending: 35\n5 New in last 7 days"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            tools:ignore="TextContrastCheck" />
 
         <!-- Meetings count -->
         <TextView

@@ -38,7 +38,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.gsonConverter)
     implementation(fileTree(mapOf(
-        "dir" to "C:\\Users\\ROG STRIX\\Downloads\\ZaloPayLib",
+        "dir" to "..\\ZaloPayLib",
         "include" to listOf("*.aar", "*.jar"),
         "exclude" to listOf("")
     )))
@@ -52,5 +52,7 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 
 }

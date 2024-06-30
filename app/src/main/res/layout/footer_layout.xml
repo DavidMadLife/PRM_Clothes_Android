@@ -24,7 +24,7 @@
         android:layout_marginEnd="16dp" />
 
     <ImageView
-        android:id="@+id/imageNew"
+        android:id="@+id/imageMap"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:src="@drawable/placeholder"
