@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -20,6 +21,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="demozpdk"
+                    android:host="app" />
+            </intent-filter>
         </activity>
         <activity android:name=".activities.BlankActivity"></activity>
         <activity android:name=".activities.RegisterActivity"></activity>
@@ -27,13 +36,19 @@
         <activity android:name=".activities.ProductDetailActivity" />
         <activity android:name=".activities.UserActivity"></activity>
         <activity android:name=".activities.BaseActivity"></activity>
-        <activity android:name=".activities.CartActivity"></activity>
+        <activity android:name=".activities.CartActivity"
+            android:label="Merchant Demo"
+            android:launchMode="singleTask"></activity>
         <activity android:name=".activities.UserInformationActivity"></activity>
 
         <activity android:name=".activities.UpdateUserActivity"></activity>
         <activity android:name=".activities.ManagePageActivity"></activity>
 
+
         <activity android:name=".activities.UserListActivity" />
+
+        <activity android:name=".activities.OrderActivity"></activity>
+
 
         <activity android:name=".activities.EditUserActivity"></activity>
         <activity android:name=".activities.SettingActivity"></activity>

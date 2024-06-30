@@ -37,6 +37,11 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.gsonConverter)
+    implementation(fileTree(mapOf(
+        "dir" to "..\\ZaloPayLib",
+        "include" to listOf("*.aar", "*.jar"),
+        "exclude" to listOf("")
+    )))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
@@ -48,4 +53,5 @@ dependencies {
     implementation ("com.auth0.android:jwtdecode:2.0.0")
 
     implementation("com.squareup.picasso:picasso:2.71828")
+
 }

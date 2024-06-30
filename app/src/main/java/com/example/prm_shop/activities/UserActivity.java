@@ -67,6 +67,16 @@ public class UserActivity extends AppCompatActivity {
                 showLogoutConfirmationDialog();
             }
         });
+
+        TextView orderTextView = findViewById(R.id.orderTextView);
+        orderTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to OrderListActivity
+                Intent intent = new Intent(UserActivity.this, OrderActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void checkUserRole() {
