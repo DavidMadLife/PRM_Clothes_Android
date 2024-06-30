@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">PRM_Shop</string>
+    <string name="google_maps_key" translatable="false">AIzaSyDxpe-bTRPWjT84zG9G1hVbKjHgFqCduD4</string>
     <!-- Existing strings -->
     <string-array name="product_sizes">
         <item>S</item>

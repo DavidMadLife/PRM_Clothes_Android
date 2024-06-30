@@ -47,6 +47,17 @@ public class BaseActivity extends AppCompatActivity {
                 }
             });
         }
+
+        ImageView imageMap = findViewById(R.id.imageMap);
+        if (imageMap != null) {
+            imageMap.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(BaseActivity.this, MapActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     private void setupHeader() {

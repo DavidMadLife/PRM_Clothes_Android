@@ -1,0 +1,66 @@
+<!-- activity_product_update.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- EditText and TextViews for product details -->
+
+    <EditText
+        android:id="@+id/edit_text_product_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="0dp"
+        android:hint="Product Name"
+        android:minHeight="48dp"
+        tools:ignore="DuplicateClickableBoundsCheck" />
+
+    <!-- Button to update product -->
+
+    <EditText
+        android:id="@+id/edit_text_product_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="397dp"
+        android:hint="Product Description"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/edit_text_product_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="0dp"
+        android:hint="Product Price"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/edit_text_product_stock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="203dp"
+        android:layout_marginEnd="-3dp"
+        android:hint="Product Stock"
+        android:minHeight="48dp" />
+
+    <Button
+        android:id="@+id/button_update_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="566dp"
+        android:layout_marginEnd="131dp"
+        android:text="Update Product" />
+
+</RelativeLayout>
