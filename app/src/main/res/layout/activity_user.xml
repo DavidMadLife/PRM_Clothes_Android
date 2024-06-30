@@ -63,6 +63,17 @@
 
         <!-- Space for Equal Spacing -->
 
+        <TextView
+            android:id="@+id/managePageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edit_text"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Manage Page"
+            android:textSize="24sp"
+            android:visibility="gone" />
+
         <ImageView
             android:id="@+id/logoutImageView"
             android:layout_width="77dp"
