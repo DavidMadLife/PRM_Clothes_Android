@@ -60,6 +60,18 @@ public class ManagePageActivity extends AppCompatActivity {
             }
         });
 
+
+        ImageView imageProduct = findViewById(R.id.imageProduct);
+        imageProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManagePageActivity.this, ProductOptionActivity.class);
+                startActivity(intent);
+                finish();  // Optional: Finish current activity if needed
+            }
+        });
+
+
         // Set onClickListeners for other TextViews as needed
         tvTotalProducts.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +79,7 @@ public class ManagePageActivity extends AppCompatActivity {
                 // Handle click, start new Activity if needed
             }
         });
+
 
         tvTotalTransactions.setOnClickListener(new View.OnClickListener() {
             @Override
