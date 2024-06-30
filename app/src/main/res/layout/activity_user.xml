@@ -38,6 +38,7 @@
 
         <!-- List Order Section -->
         <TextView
+            android:id="@+id/orderTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="List Order"

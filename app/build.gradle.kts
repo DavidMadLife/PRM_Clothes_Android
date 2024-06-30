@@ -37,6 +37,11 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.gsonConverter)
+    implementation(fileTree(mapOf(
+        "dir" to "C:\\Users\\ROG STRIX\\Downloads\\ZaloPayLib",
+        "include" to listOf("*.aar", "*.jar"),
+        "exclude" to listOf("")
+    )))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
@@ -47,4 +52,5 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation("com.squareup.picasso:picasso:2.71828")
+
 }
