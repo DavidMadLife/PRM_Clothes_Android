@@ -30,7 +30,7 @@ public class UserInformationActivity extends AppCompatActivity {
     private static final String ADMIN = "Admin";
     private static final String CUSTOMER = "Customer";
     private ImageView imageHome;
-    private Button updateButton;
+    private Button updateButton, changePasswordButton; // Added changePasswordButton
 
 
     @Override
@@ -46,6 +46,7 @@ public class UserInformationActivity extends AppCompatActivity {
         roleTextView = findViewById(R.id.roleTextView);
         imageHome = findViewById(R.id.imageHome);
         updateButton = findViewById(R.id.updateButton);
+        changePasswordButton = findViewById(R.id.changePasswordButton); // Initialize changePasswordButton
 
         // Initialize Retrofit service
         memberService = ApiClient.getRetrofitInstance().create(MemberService.class);
@@ -74,12 +75,11 @@ public class UserInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Quay lại BlankActivity
-                Intent intent = new Intent(UserInformationActivity.this, BlankActivity.class);
+                Intent intent = new Intent(UserInformationActivity.this, ProductActivity.class);
                 startActivity(intent);
                 finish(); // Kết thúc UserInformationActivity nếu không cần giữ lại
             }
         });
-
 
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +90,14 @@ public class UserInformationActivity extends AppCompatActivity {
             }
         });
 
-
+        changePasswordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInformationActivity.this, ChangePasswordActivity.class);
+                intent.putExtra("USER_ID", userId); // Pass user ID if needed
+                startActivity(intent);
+            }
+        });
 
     }
 

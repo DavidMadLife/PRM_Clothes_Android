@@ -43,8 +43,17 @@
 
         <activity android:name=".activities.UpdateUserActivity"></activity>
         <activity android:name=".activities.ManagePageActivity"></activity>
+
+
+        <activity android:name=".activities.UserListActivity" />
+
         <activity android:name=".activities.OrderActivity"></activity>
 
+
+        <activity android:name=".activities.EditUserActivity"></activity>
+        <activity android:name=".activities.SettingActivity"></activity>
+
+        <activity android:name=".activities.ChangePasswordActivity"></activity>
 
     </application>
 

@@ -109,43 +109,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextAddress" />
 
-    <LinearLayout
+    <include
         android:id="@+id/footerLayout"
-        android:layout_width="match_parent"
+        layout="@layout/footer_layout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:gravity="center_vertical"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <!-- Home Button -->
-        <ImageView
-            android:id="@+id/imageHome"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_home"
-            android:layout_weight="1"
-            android:layout_marginEnd="16dp"/>
-
-        <!-- Notification Button -->
-        <ImageView
-            android:id="@+id/imageNotification"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_notificate"
-            android:layout_weight="1"
-            android:layout_marginEnd="16dp"/>
-
-        <!-- User Button -->
-        <ImageView
-            android:id="@+id/imageUser"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_user"
-            android:layout_weight="1"
-            android:layout_marginEnd="16dp"/>
-
-    </LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
