@@ -38,7 +38,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.gsonConverter)
     implementation(fileTree(mapOf(
-        "dir" to "C:\\Users\\ROG STRIX\\Downloads\\ZaloPayLib",
+        "dir" to "..\\ZaloPayLib",
         "include" to listOf("*.aar", "*.jar"),
         "exclude" to listOf("")
     )))
