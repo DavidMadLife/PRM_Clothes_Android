@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="order_actions">
+        <item>Pending</item>
+        <item>Confirm</item>
+        <item>Reject</item>
+    </string-array>
+</resources>

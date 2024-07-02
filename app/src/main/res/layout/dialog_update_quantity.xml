@@ -3,17 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@android:color/white">
 
     <!-- Quantity Label -->
     <TextView
         android:id="@+id/quantity_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Số Lượng"
+        android:text="Quantity:"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:paddingTop="8dp" />
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
+        android:textColor="@android:color/black" />
 
     <!-- Quantity LinearLayout -->
     <LinearLayout
@@ -24,11 +27,13 @@
 
         <Button
             android:id="@+id/decrement_button"
-            android:layout_width="67dp"
-            android:layout_height="wrap_content"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:background="@drawable/rounded_button"
             android:text="-"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginEnd="8dp" />
 
         <TextView
             android:id="@+id/quantity_text_view"
@@ -37,15 +42,18 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:text="1"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/increment_button"
-            android:layout_width="67dp"
-            android:layout_height="wrap_content"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:background="@drawable/rounded_button"
             android:text="+"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_marginStart="8dp" />
     </LinearLayout>
 
     <!-- Size Label -->
@@ -53,10 +61,12 @@
         android:id="@+id/size_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Size"
+        android:text="Size:"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:paddingTop="8dp" />
+        android:paddingTop="16dp"
+        android:paddingBottom="4dp"
+        android:textColor="@android:color/black" />
 
     <!-- Size RadioGroup -->
     <RadioGroup
@@ -64,36 +74,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="4dp">
+        android:paddingTop="4dp"
+        android:gravity="center">
 
         <RadioButton
             android:id="@+id/size_s"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="S" />
+            android:text="S"
+            android:layout_marginEnd="8dp"
+            android:buttonTint="@color/colorPrimaryDark" />
 
         <RadioButton
             android:id="@+id/size_m"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="M" />
+            android:text="M"
+            android:layout_marginEnd="8dp"
+            android:buttonTint="@color/colorPrimaryDark" />
 
         <RadioButton
             android:id="@+id/size_l"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="L" />
+            android:text="L"
+            android:layout_marginEnd="8dp"
+            android:buttonTint="@color/colorPrimaryDark" />
 
         <RadioButton
             android:id="@+id/size_xl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="XL" />
+            android:text="XL"
+            android:layout_marginEnd="8dp"
+            android:buttonTint="@color/colorPrimaryDark" />
 
         <RadioButton
             android:id="@+id/size_xxl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="XXL" />
+            android:text="XXL"
+            android:buttonTint="@color/colorPrimaryDark" />
     </RadioGroup>
 </LinearLayout>

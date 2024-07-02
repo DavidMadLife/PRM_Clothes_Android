@@ -18,7 +18,7 @@ import com.auth0.android.jwt.JWT;
 import com.example.prm_shop.MainActivity;
 import com.example.prm_shop.R;
 
-public class UserActivity extends AppCompatActivity {
+public class UserActivity extends BaseActivity {
 
     private TextView managePageTextView;
     private ImageView logoutImageView;

@@ -9,4 +9,6 @@
         <item>XL</item>
         <item>XXL</item>
     </string-array>
+
+    <string name="select_action">Select action</string>
 </resources>

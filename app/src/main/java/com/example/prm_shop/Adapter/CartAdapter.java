@@ -5,6 +5,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -83,8 +84,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         private TextView unitPriceTextView;
 
         private TextView sizeTextView;
-        private Button btnDelete;
-        private Button btnUpdate;
+        private ImageButton btnDelete;
+        private ImageButton  btnUpdate;
 
         public CartViewHolder(@NonNull View itemView, OnItemClickListener onItemClickListener) {
             super(itemView);
