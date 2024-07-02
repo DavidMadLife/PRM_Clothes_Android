@@ -20,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductManageActivity extends AppCompatActivity implements ProductManageAdapter.ProductManageListener {
+public class ProductManageActivity extends FooterActivity implements ProductManageAdapter.ProductManageListener {
 
     private RecyclerView recyclerView;
     private ProductManageAdapter adapter;

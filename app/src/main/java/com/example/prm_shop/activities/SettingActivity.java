@@ -15,7 +15,7 @@ import com.example.prm_shop.MainActivity;
 import com.example.prm_shop.R;
 
 
-public class SettingActivity extends AppCompatActivity {
+public class SettingActivity extends FooterActivity {
 
     private TextView homePageView;
     private ImageView logoutImageView;

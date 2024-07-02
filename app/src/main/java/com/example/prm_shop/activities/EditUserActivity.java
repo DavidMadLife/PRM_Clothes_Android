@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditUserActivity extends AppCompatActivity {
+public class EditUserActivity extends FooterActivity {
 
     private EditText editUserName;
     private EditText editEmail;

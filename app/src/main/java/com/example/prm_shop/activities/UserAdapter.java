@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class UserAdapter extends BaseAdapter {
 
     private Context context;
     private List<UserResponse> userList;
+    private SparseBooleanArray itemVisibilityArray = new SparseBooleanArray();
     public static final int REQUEST_CODE_EDIT_USER = 1;
 
     public UserAdapter(Context context, List<UserResponse> userList) {
@@ -52,11 +54,27 @@ public class UserAdapter extends BaseAdapter {
 
         UserResponse user = userList.get(position);
 
+        TextView userNumber = convertView.findViewById(R.id.userNumber);
         TextView userName = convertView.findViewById(R.id.userName);
         Button editButton = convertView.findViewById(R.id.editButton);
         Button deleteButton = convertView.findViewById(R.id.deleteButton);
 
+        userNumber.setText(String.valueOf(position + 1) + ".");
         userName.setText(user.getUserName());
+
+        // Set initial visibility based on the state in SparseBooleanArray
+        boolean isVisible = itemVisibilityArray.get(position, false);
+        editButton.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+        deleteButton.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isVisible = itemVisibilityArray.get(position, false);
+                itemVisibilityArray.put(position, !isVisible);
+                notifyDataSetChanged();
+            }
+        });
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
