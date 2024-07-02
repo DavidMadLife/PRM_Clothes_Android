@@ -148,7 +148,7 @@ public class CartActivity extends BaseActivity {
         ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                return false; // Không hỗ trợ di chuyển
+                return false;
             }
 
             @Override

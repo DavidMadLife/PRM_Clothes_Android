@@ -71,6 +71,16 @@ public class ManagePageActivity extends FooterActivity {
             }
         });
 
+        ImageView imageOrder = findViewById(R.id.imageOrder);
+        imageOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManagePageActivity.this, OrderAdminActivity.class);
+                startActivity(intent);
+                finish();  // Optional: Finish current activity if needed
+            }
+        });
+
 
         // Set onClickListeners for other TextViews as needed
         tvTotalProducts.setOnClickListener(new View.OnClickListener() {
