@@ -21,7 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class ManagePageActivity extends AppCompatActivity {
+public class ManagePageActivity extends FooterActivity {
 
     private TextView tvTotalMembers, tvTotalProducts, tvTotalTransactions, tvTotalRevenue;
 

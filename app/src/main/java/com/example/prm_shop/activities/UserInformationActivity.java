@@ -22,7 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class UserInformationActivity extends AppCompatActivity {
+public class UserInformationActivity extends BaseActivity {
 
     private TextView userNameTextView, emailTextView, phoneTextView, addressTextView, roleTextView;
     private MemberService memberService;

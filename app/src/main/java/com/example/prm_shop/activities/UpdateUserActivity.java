@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpdateUserActivity extends AppCompatActivity {
+public class UpdateUserActivity extends BaseActivity {
 
     private EditText editTextUserName, editTextEmail, editTextPhone, editTextAddress;
     private Button buttonUpdateUser, buttonCancel;
