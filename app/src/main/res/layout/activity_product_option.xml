@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/light_purple"
     tools:context=".activities.ProductOptionActivity">
 
@@ -28,6 +27,10 @@
         android:padding="20dp"
         android:text="Create Product" />
 
-   
-
+    <include
+        android:id="@+id/footerManageLayout"
+        layout="@layout/footer_manage_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

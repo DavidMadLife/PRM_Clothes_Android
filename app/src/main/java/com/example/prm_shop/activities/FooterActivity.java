@@ -51,7 +51,7 @@ public class FooterActivity extends AppCompatActivity {
             imageProduct.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(FooterActivity.this, ProductManageActivity.class);
+                    Intent intent = new Intent(FooterActivity.this, ProductOptionActivity.class);
                     startActivity(intent);
                 }
             });
