@@ -1,66 +1,83 @@
-<!-- activity_product_update.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- EditText and TextViews for product details -->
+    android:layout_height="match_parent"
+    tools:context=".activities.UpdateProductActivity">
 
     <EditText
         android:id="@+id/edit_text_product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="0dp"
         android:hint="Product Name"
-        android:minHeight="48dp"
-        tools:ignore="DuplicateClickableBoundsCheck" />
-
-    <!-- Button to update product -->
+        android:layout_margin="16dp"
+        android:padding="8dp"
+        android:background="@drawable/rounded_edit_text" />
 
     <EditText
         android:id="@+id/edit_text_product_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="397dp"
-        android:hint="Product Description"
-        android:minHeight="48dp" />
+        android:hint="Description"
+        android:layout_below="@id/edit_text_product_name"
+        android:layout_margin="16dp"
+        android:padding="8dp"
+        android:background="@drawable/rounded_edit_text" />
 
     <EditText
         android:id="@+id/edit_text_product_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="0dp"
-        android:hint="Product Price"
-        android:minHeight="48dp" />
+        android:hint="Price"
+        android:layout_below="@id/edit_text_product_description"
+        android:layout_margin="16dp"
+        android:padding="8dp"
+        android:background="@drawable/rounded_edit_text"
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/edit_text_product_stock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="203dp"
-        android:layout_marginEnd="-3dp"
-        android:hint="Product Stock"
-        android:minHeight="48dp" />
+        android:hint="Stock"
+        android:layout_below="@id/edit_text_product_price"
+        android:layout_margin="16dp"
+        android:padding="8dp"
+        android:background="@drawable/rounded_edit_text"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/button_select_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text_product_stock"
+        android:layout_margin="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Select Image"/>
+
+    <ImageView
+        android:id="@+id/product_image_view"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/button_select_image"
+        android:layout_margin="16dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"/>
 
     <Button
         android:id="@+id/button_update_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="566dp"
-        android:layout_marginEnd="131dp"
-        android:text="Update Product" />
+        android:layout_below="@id/product_image_view"
+        android:layout_margin="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Update Product"/>
 
+
+    <!--<include
+        android:id="@+id/footerManageLayout"
+        layout="@layout/footer_manage_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />-->
 </RelativeLayout>
+

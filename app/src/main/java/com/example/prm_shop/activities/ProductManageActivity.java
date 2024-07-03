@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +21,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductManageActivity extends FooterActivity implements ProductManageAdapter.ProductManageListener {
+
+    private static final int UPDATE_PRODUCT_REQUEST = 1;
 
     private RecyclerView recyclerView;
     private ProductManageAdapter adapter;
@@ -68,7 +70,7 @@ public class ProductManageActivity extends FooterActivity implements ProductMana
     public void onProductUpdate(ProductResponse product) {
         Intent intent = new Intent(ProductManageActivity.this, UpdateProductActivity.class);
         intent.putExtra("product", product);
-        startActivity(intent);
+        startActivityForResult(intent, UPDATE_PRODUCT_REQUEST);
     }
 
     @Override
@@ -94,5 +96,13 @@ public class ProductManageActivity extends FooterActivity implements ProductMana
                 Toast.makeText(ProductManageActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == UPDATE_PRODUCT_REQUEST && resultCode == RESULT_OK) {
+            loadProducts(); // Refresh product list after update
+        }
     }
 }
