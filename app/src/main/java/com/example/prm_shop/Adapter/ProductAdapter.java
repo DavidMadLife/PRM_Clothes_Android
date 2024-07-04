@@ -47,7 +47,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         ProductResponse product = productList.get(position);
         holder.productName.setText(product.getProductName());
-        holder.productPrice.setText("Price: " + product.getUnitPrice() + "$");
+        holder.productPrice.setText("Price: " + product.getUnitPrice() + "VND");
         Picasso.get().load(product.getImg()).into(holder.productImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

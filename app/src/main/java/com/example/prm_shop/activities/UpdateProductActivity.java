@@ -33,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpdateProductActivity extends AppCompatActivity {
+public class UpdateProductActivity extends FooterActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 

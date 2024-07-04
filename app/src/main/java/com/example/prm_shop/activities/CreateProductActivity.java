@@ -31,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreateProductActivity extends AppCompatActivity {
+public class CreateProductActivity extends FooterActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
     private EditText unitsInStock, unitPrice, providerId, status, weight, categoryId, productName, description;
@@ -72,7 +72,7 @@ public class CreateProductActivity extends AppCompatActivity {
         createProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CreateProductActivity.this, ManagePageActivity.class);
+                Intent intent = new Intent(CreateProductActivity.this, ProductOptionActivity.class);
                 createProduct();
                 startActivity(intent);
             }
