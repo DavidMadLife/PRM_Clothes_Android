@@ -1,83 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_gray"
     tools:context=".activities.UpdateProductActivity">
-
-    <EditText
-        android:id="@+id/edit_text_product_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Product Name"
-        android:layout_margin="16dp"
-        android:padding="8dp"
-        android:background="@drawable/rounded_edit_text" />
-
-    <EditText
-        android:id="@+id/edit_text_product_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Description"
-        android:layout_below="@id/edit_text_product_name"
-        android:layout_margin="16dp"
-        android:padding="8dp"
-        android:background="@drawable/rounded_edit_text" />
-
-    <EditText
-        android:id="@+id/edit_text_product_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Price"
-        android:layout_below="@id/edit_text_product_description"
-        android:layout_margin="16dp"
-        android:padding="8dp"
-        android:background="@drawable/rounded_edit_text"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/edit_text_product_stock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Stock"
-        android:layout_below="@id/edit_text_product_price"
-        android:layout_margin="16dp"
-        android:padding="8dp"
-        android:background="@drawable/rounded_edit_text"
-        android:inputType="number" />
-
-    <Button
-        android:id="@+id/button_select_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_text_product_stock"
-        android:layout_margin="16dp"
-        android:layout_centerHorizontal="true"
-        android:text="Select Image"/>
 
     <ImageView
         android:id="@+id/product_image_view"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_below="@id/button_select_image"
-        android:layout_margin="16dp"
-        android:layout_centerHorizontal="true"
-        android:scaleType="centerCrop"/>
+        android:layout_width="262dp"
+        android:layout_height="143dp"
+        android:layout_marginTop="4dp"
+        android:padding="16dp"
+        android:src="@drawable/ic_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_update_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/product_image_view"
-        android:layout_margin="16dp"
-        android:layout_centerHorizontal="true"
-        android:text="Update Product"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/product_image_view"
+        app:layout_constraintBottom_toTopOf="@id/footerManageLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Product Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Product Name"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
 
-    <!--<include
+        <EditText
+            android:id="@+id/edit_text_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edit_text"
+            android:hint="Enter product name"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Description -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Description"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edit_text_product_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edit_text"
+            android:hint="Enter description"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Price -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Price"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edit_text_product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edit_text"
+            android:hint="Enter price"
+            android:inputType="numberDecimal"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Stock -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Stock"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edit_text_product_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edit_text"
+            android:hint="Enter stock"
+            android:inputType="number"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!-- Select Image Button
+        <Button
+            android:id="@+id/button_select_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_button"
+            android:padding="12dp"
+            android:text="Select Image"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />-->
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_select_image"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_button"
+                android:padding="12dp"
+                android:text="Select Image"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/button_update_product"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:padding="12dp"
+                android:text="Update Product"
+                android:background="@drawable/rounded_button"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
         android:id="@+id/footerManageLayout"
         layout="@layout/footer_manage_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />-->
-</RelativeLayout>
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
+</androidx.constraintlayout.widget.ConstraintLayout>
