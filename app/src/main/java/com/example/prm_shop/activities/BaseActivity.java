@@ -96,7 +96,20 @@ public class BaseActivity extends AppCompatActivity {
                 imageViewCart.setImageTintList(createColorStateList(R.color.black)); // Set initial tint color to purple
             }
         }
+
+        ImageView imageMessage = findViewById(R.id.imageViewMessage);
+        if (imageMessage != null) {
+            imageMessage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(BaseActivity.this, MessageActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
+
+
 
     private ColorStateList createColorStateList(int colorRes) {
         int[][] states = new int[][]{
