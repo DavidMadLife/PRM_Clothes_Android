@@ -47,6 +47,10 @@ import com.example.prm_shop.models.request.LoginView;
 import com.example.prm_shop.models.response.TokenResponse;
 import com.example.prm_shop.network.ApiClient;
 import com.example.prm_shop.network.MemberService;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -116,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
                             // Lưu token vào SharedPreferences
                             saveToken(token);
+                            addDataToFirestore(userId);
 
                             // Chuyển sang UserActivity
                             Intent intent = new Intent(MainActivity.this, ProductActivity.class);
@@ -147,5 +152,22 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("TOKEN", token);
         editor.apply();
+    }
+
+    private void addDataToFirestore(String userId){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("userId", userId);
+
+        db.collection("users")
+                .add(data)
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(getApplicationContext(), "Data added successfully", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    String errorMessage = "Error adding data: " + e.getMessage();
+                    Toast.makeText(getApplicationContext(), "Error adding data", Toast.LENGTH_SHORT).show();
+                    Log.e("MainActivity", errorMessage, e);
+                });
     }
 }
