@@ -16,10 +16,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-
     }
 }
 
 rootProject.name = "PRM_Shop"
 include(":app")
- 

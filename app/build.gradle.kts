@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.google.gms.google.services)
+    /*id("com.google.gms.google-services")*/
 }
 
 android {
@@ -42,7 +44,9 @@ dependencies {
         "include" to listOf("*.aar", "*.jar"),
         "exclude" to listOf("")
     )))
+
     implementation(libs.firebase.inappmessaging)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

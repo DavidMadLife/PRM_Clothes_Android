@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface OrderService {
-    @POST("Oder/checkout")
+    @POST("Order/checkout")
     Call<Void> checkout(@Body OrderRequest orderRequest);
 
     @GET("Order/getOrderByMemberId/{id}")

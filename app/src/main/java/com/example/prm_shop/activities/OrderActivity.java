@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.auth0.android.jwt.JWT;
 import com.example.prm_shop.Adapter.OrderAdapter;
+import com.example.prm_shop.Adapter.OrderAdapterUser;
 import com.example.prm_shop.R;
 import com.example.prm_shop.models.response.OrderResponse;
 import com.example.prm_shop.network.ApiClient;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 public class OrderActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
-    private OrderAdapter orderAdapter;
+    private OrderAdapterUser orderAdapter;
     private OrderService orderService;
     private int userId;
 
@@ -38,7 +39,7 @@ public class OrderActivity extends BaseActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        orderAdapter = new OrderAdapter(this, new ArrayList<>());
+        orderAdapter = new OrderAdapterUser(this, new ArrayList<>());
         recyclerView.setAdapter(orderAdapter);
 
         orderService = ApiClient.getRetrofitInstance().create(OrderService.class);

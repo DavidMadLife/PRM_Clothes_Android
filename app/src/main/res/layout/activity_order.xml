@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toTopOf="@id/footerLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/order_item"/>
+        tools:listitem="@layout/order_item_user"/>
 
     <include
         android:id="@+id/footerLayout"

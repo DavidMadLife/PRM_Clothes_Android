@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageHome"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:src="@drawable/home_product"
         android:layout_weight="1"
         android:layout_marginEnd="8dp" />
@@ -17,7 +17,7 @@
     <ImageView
         android:id="@+id/imageNotificate"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:src="@drawable/notification"
         android:layout_weight="1"
         android:layout_marginEnd="8dp" />
@@ -25,7 +25,7 @@
     <ImageView
         android:id="@+id/imageMap"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:src="@drawable/placeholder"
         android:layout_weight="1"
         android:layout_marginEnd="8dp" />
@@ -33,7 +33,7 @@
     <ImageView
         android:id="@+id/imageUser"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:src="@drawable/user_normal"
         android:layout_weight="1"
         android:layout_marginEnd="0dp" />

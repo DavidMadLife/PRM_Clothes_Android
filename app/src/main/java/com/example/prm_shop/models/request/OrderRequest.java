@@ -3,7 +3,7 @@ package com.example.prm_shop.models.request;
 public class OrderRequest {
     private int memberId;
 
-    public OrderRequest(int memberId) {
+    public OrderRequest() {
         this.memberId = memberId;
     }
 
