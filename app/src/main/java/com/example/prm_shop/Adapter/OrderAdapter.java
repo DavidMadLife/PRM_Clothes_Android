@@ -97,7 +97,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         public void bind(OrderResponse order) {
             orderCodeTextView.setText("Order Code: " + order.getOrderCode());
             orderDateTextView.setText("Order Date: " + order.getOrderDate());
-            totalTextView.setText("Total: $" + order.getTotal());
+            totalTextView.setText("Total: " + order.getTotal() + "VND");
             int color;
             switch (order.getStatus()) {
                 case "Confirmed":

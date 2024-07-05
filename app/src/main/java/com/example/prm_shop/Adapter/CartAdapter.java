@@ -115,7 +115,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         public void bind(CartItemResponse item, boolean showingDeleteButton, boolean showingUpdateButton) {
             productNameTextView.setText(item.getProductName());
             quantityTextView.setText("Quantity: " + item.getQuantity());
-            unitPriceTextView.setText("Unit Price: $" + item.getUnitPrice());
+            unitPriceTextView.setText("Unit Price: " + item.getUnitPrice() + " VND");
             sizeTextView.setText("Size: " + item.getSize());
             Picasso.get().load(item.getImg()).into(productImageView);
 

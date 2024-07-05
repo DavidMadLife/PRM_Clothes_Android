@@ -2,12 +2,13 @@ package com.example.prm_shop.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.prm_shop.R;
 import com.example.prm_shop.Adapter.ProductManageAdapter;
 import com.example.prm_shop.models.response.ProductResponse;
@@ -22,9 +23,13 @@ import retrofit2.Response;
 
 public class ProductManageActivity extends FooterActivity implements ProductManageAdapter.ProductManageListener {
 
+    private static final int UPDATE_PRODUCT_REQUEST = 1;
     private RecyclerView recyclerView;
     private ProductManageAdapter adapter;
     private ProductService productService;
+
+    private float dX, dY;
+    private int lastAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,38 @@ public class ProductManageActivity extends FooterActivity implements ProductMana
 
         // Load products
         loadProducts();
+
+        // Floating Action Button
+        FloatingActionButton fabAddProduct = findViewById(R.id.fab_add_product);
+        fabAddProduct.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getActionMasked()) {
+                    case MotionEvent.ACTION_DOWN:
+                        dX = v.getX() - event.getRawX();
+                        dY = v.getY() - event.getRawY();
+                        lastAction = MotionEvent.ACTION_DOWN;
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+                        v.setX(event.getRawX() + dX);
+                        v.setY(event.getRawY() + dY);
+                        lastAction = MotionEvent.ACTION_MOVE;
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        if (lastAction == MotionEvent.ACTION_DOWN) {
+                            Intent intent = new Intent(ProductManageActivity.this, CreateProductActivity.class);
+                            startActivity(intent);
+                        }
+                        break;
+
+                    default:
+                        return false;
+                }
+                return true;
+            }
+        });
     }
 
     private void loadProducts() {
@@ -68,7 +105,7 @@ public class ProductManageActivity extends FooterActivity implements ProductMana
     public void onProductUpdate(ProductResponse product) {
         Intent intent = new Intent(ProductManageActivity.this, UpdateProductActivity.class);
         intent.putExtra("product", product);
-        startActivity(intent);
+        startActivityForResult(intent, UPDATE_PRODUCT_REQUEST);
     }
 
     @Override
@@ -94,5 +131,13 @@ public class ProductManageActivity extends FooterActivity implements ProductMana
                 Toast.makeText(ProductManageActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == UPDATE_PRODUCT_REQUEST && resultCode == RESULT_OK) {
+            loadProducts(); // Refresh product list after update
+        }
     }
 }

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.prm_shop.R;
 
-public class ProductOptionActivity extends ManagePageActivity {
+public class ProductOptionActivity extends FooterActivity {
     private Button btnProductList, btnCreateProduct;
 
 

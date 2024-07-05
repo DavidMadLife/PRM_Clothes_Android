@@ -61,7 +61,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
 
         public void bind(OrderDetailResponse orderDetail) {
             productNameTextView.setText("Product Name: " + orderDetail.getProductName());
-            unitPriceTextView.setText("Unit Price: $" + orderDetail.getUnitPrice());
+            unitPriceTextView.setText("Unit Price: " + orderDetail.getUnitPrice() + "VND");
             quantityTextView.setText("Quantity: " + orderDetail.getQuantity());
             sizeTextView.setText("Size: " + orderDetail.getSize());
             Picasso.get().load(orderDetail.getImg()).into(productImageView);

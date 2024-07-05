@@ -1,90 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/light_gray">
 
-    <EditText
-        android:id="@+id/units_in_stock"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Units In Stock"
-        android:inputType="number"
-        android:minHeight="48dp" />
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/unit_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Unit Price"
-        android:inputType="numberDecimal"
-        android:minHeight="48dp" />
+        <include
+            layout="@layout/layout_product_fields"
+            android:layout_marginBottom="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-    <EditText
-        android:id="@+id/provider_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Provider ID"
-        android:inputType="number"
-        android:minHeight="48dp" />
+        <include
+            android:id="@+id/footerManageLayout"
+            layout="@layout/footer_manage_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" />
 
-    <EditText
-        android:id="@+id/status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Status"
-        android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/weight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Weight"
-        android:inputType="number"
-        android:minHeight="48dp" />
+    </RelativeLayout>
 
-    <EditText
-        android:id="@+id/category_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Category ID"
-        android:inputType="number"
-        android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/product_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Product Name"
-        android:minHeight="48dp" />
-
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Description"
-        android:minHeight="48dp" />
-
-    <ImageView
-        android:id="@+id/img_preview"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
-        android:background="@android:color/darker_gray" />
-
-    <Button
-        android:id="@+id/choose_image_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Choose Image" />
-
-    <Button
-        android:id="@+id/create_product_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:minHeight="48dp"
-        android:text="Create Product" />
-</LinearLayout>
+</ScrollView>

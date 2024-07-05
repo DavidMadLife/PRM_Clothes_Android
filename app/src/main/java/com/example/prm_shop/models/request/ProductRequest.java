@@ -1,77 +1,69 @@
 package com.example.prm_shop.models.request;
 
-public class ProductRequest {
+import com.google.gson.annotations.SerializedName;
 
-    private String productName;
-    private String description;
-    private int unitPrice;
-    private int unitsInStock;
-    private int providerId;
-    private String status;
-    private int weight;
+import java.io.Serializable;
+
+public class ProductRequest implements Serializable {
+
+    @SerializedName("productId")
+    private int productId;
+
+    @SerializedName("categoryId")
     private int categoryId;
 
-    public String getProductName() {
-        return productName;
-    }
+    @SerializedName("providerId")
+    private int providerId;
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
+    @SerializedName("productName")
+    private String productName;
 
-    public String getDescription() {
-        return description;
-    }
+    @SerializedName("description")
+    private String description;
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    @SerializedName("unitPrice")
+    private double unitPrice;
 
-    public int getUnitPrice() {
-        return unitPrice;
-    }
+    @SerializedName("unitsInStock")
+    private int unitsInStock;
 
-    public void setUnitPrice(int unitPrice) {
-        this.unitPrice = unitPrice;
-    }
+    @SerializedName("status")
+    private String status;
 
-    public int getUnitsInStock() {
-        return unitsInStock;
-    }
+    @SerializedName("img")
+    private String img;
 
-    public void setUnitsInStock(int unitsInStock) {
-        this.unitsInStock = unitsInStock;
-    }
+    @SerializedName("weight")
+    private double weight;
 
-    public int getProviderId() {
-        return providerId;
-    }
+    // Getters and setters
+    public int getProductId() { return productId; }
+    public void setProductId(int productId) { this.productId = productId; }
 
-    public void setProviderId(int providerId) {
-        this.providerId = providerId;
-    }
+    public int getCategoryId() { return categoryId; }
+    public void setCategoryId(int categoryId) { this.categoryId = categoryId; }
 
-    public String getStatus() {
-        return status;
-    }
+    public int getProviderId() { return providerId; }
+    public void setProviderId(int providerId) { this.providerId = providerId; }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public String getProductName() { return productName; }
+    public void setProductName(String productName) { this.productName = productName; }
 
-    public int getWeight() {
-        return weight;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
+    public double getUnitPrice() { return unitPrice; }
+    public void setUnitPrice(double unitPrice) { this.unitPrice = unitPrice; }
 
-    public int getCategoryId() {
-        return categoryId;
-    }
+    public int getUnitsInStock() { return unitsInStock; }
+    public void setUnitsInStock(int unitsInStock) { this.unitsInStock = unitsInStock; }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+
+    public String getImg() { return img; }
+    public void setImg(String img) { this.img = img; }
+
+    public double getWeight() { return weight; }
+    public void setWeight(double weight) { this.weight = weight; }
 }

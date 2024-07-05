@@ -44,7 +44,9 @@ dependencies {
         "include" to listOf("*.aar", "*.jar"),
         "exclude" to listOf("")
     )))
-    implementation(libs.firebase.messaging)
+
+    implementation(libs.firebase.inappmessaging)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
@@ -57,6 +59,9 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.0.2")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.squareup.picasso:picasso:2.71828")
+
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation("com.google.android.material:material:1.4.0")
 
 
 }
