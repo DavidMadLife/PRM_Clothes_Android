@@ -72,7 +72,7 @@ public class CreateProductActivity extends FooterActivity {
         createProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CreateProductActivity.this, ProductOptionActivity.class);
+                Intent intent = new Intent(CreateProductActivity.this, ProductManageActivity.class);
                 createProduct();
                 startActivity(intent);
             }
