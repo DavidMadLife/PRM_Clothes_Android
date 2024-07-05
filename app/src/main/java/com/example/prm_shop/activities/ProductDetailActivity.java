@@ -3,6 +3,7 @@ package com.example.prm_shop.activities;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,8 +15,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.auth0.android.jwt.JWT;
+import com.example.prm_shop.Adapter.CartAdapter;
 import com.example.prm_shop.R;
 import com.example.prm_shop.models.request.CartRequest;
+import com.example.prm_shop.models.response.CartResponse;
 import com.example.prm_shop.models.response.ProductResponse;
 import com.example.prm_shop.network.ApiClient;
 import com.example.prm_shop.network.CartService;
@@ -38,6 +41,11 @@ public class ProductDetailActivity extends BaseActivity {
     private RadioGroup sizeRadioGroup;
     private int quantity = 1;
     private ProductResponse product;
+
+    private  int userId;
+
+    private CartAdapter cartAdapter;
+    private TextView textTotal;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -141,6 +149,7 @@ public class ProductDetailActivity extends BaseActivity {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if (response.isSuccessful()) {
+                        fetchCartData();
                         Toast.makeText(ProductDetailActivity.this, "Added to cart successfully", Toast.LENGTH_SHORT).show();
                     } else {
                         if (response.errorBody() != null) {
@@ -168,6 +177,55 @@ public class ProductDetailActivity extends BaseActivity {
                     Toast.makeText(ProductDetailActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+        } else {
+            Toast.makeText(this, "Token not found", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private String getToken() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        return sharedPreferences.getString("TOKEN", "");
+    }
+    public void fetchCartData() {
+        CartService cartService = ApiClient.getRetrofitInstance().create(CartService.class);
+
+        String token = getToken();
+
+        // Check if token exists
+        if (!token.isEmpty()) {
+            // Decode token to get userId
+            JWT jwt = new JWT(token);
+            String userIdStr = jwt.getClaim("memberId").asString();
+            if (userIdStr != null && !userIdStr.isEmpty()) {
+                userId = Integer.parseInt(userIdStr);
+
+                // Call API to get cart data
+                Call<CartResponse> call = cartService.getCart(userId);
+                call.enqueue(new Callback<CartResponse>() {
+                    @Override
+                    public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
+                        if (response.isSuccessful()) {
+                            CartResponse cartResponse = response.body();
+                            if (cartResponse != null && cartResponse.getItems() != null) {
+                                cartAdapter.setItems(cartResponse.getItems());
+                                textTotal.setText("Total: $" + cartResponse.getTotal());
+                                Log.d("CartActivity", "Number of items in cart: " + cartResponse.getItems().size());
+                            } else {
+                                Log.e("CartActivity", "Cart response or items are null");
+                            }
+                        } else {
+                            Log.e("CartActivity", "Response unsuccessful or empty");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<CartResponse> call, Throwable t) {
+                        Log.e("CartActivity", "Error fetching cart: " + t.getMessage());
+                    }
+                });
+
+            } else {
+                Toast.makeText(this, "User ID is missing", Toast.LENGTH_SHORT).show();
+            }
         } else {
             Toast.makeText(this, "Token not found", Toast.LENGTH_SHORT).show();
         }

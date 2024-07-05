@@ -185,6 +185,7 @@ public class CartActivity extends BaseActivity {
                 String totalText = textTotal.getText().toString();
                 String totalAmountStr = totalText.replace("Total: $", "").replace(",", "").trim();
                 double totalAmount = Double.parseDouble(totalAmountStr);
+
                 CreateOrder orderApi = new CreateOrder();
                 try {
                     JSONObject data = orderApi.createOrder(String.valueOf((int)totalAmount));
@@ -199,28 +200,39 @@ public class CartActivity extends BaseActivity {
                         txtToken.setText(data.getString("zptranstoken"));*/
                         //IsDone();
                         String token = data.getString("zptranstoken");
+
+                        Log.d("zptranstoken", token);
                         ZaloPaySDK.getInstance().payOrder(CartActivity.this, token, "demozpdk://app", new PayOrderListener() {
                             @Override
                             public void onPaymentSucceeded(String s, String s1, String s2) {
 
+                                Log.d("ordeRequest", String.valueOf(userId));
+
+                                OrderRequest orderRequest = new OrderRequest();
+                                orderRequest.setMemberId(userId);
+
+
                                 OrderService orderService = ApiClient.getRetrofitInstance().create(OrderService.class);
-                                OrderRequest orderRequest = new OrderRequest(userId);
                                 Call<Void> call = orderService.checkout(orderRequest);
                                 call.enqueue(new Callback<Void>() {
                                     @Override
                                     public void onResponse(Call<Void> call, Response<Void> response) {
-                                        if (response.isSuccessful()) {
-                                            Toast.makeText(getApplicationContext(), "Checkout successful", Toast.LENGTH_LONG).show();
-                                        } else {
-                                            Toast.makeText(getApplicationContext(), "Checkout failed", Toast.LENGTH_LONG).show();
+                                        if(response.isSuccessful()){
+                                            Toast.makeText(CartActivity.this, "Checkout successful", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(CartActivity.this, PaymentActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }else{
+                                            Toast.makeText(CartActivity.this, "Checkout failed", Toast.LENGTH_SHORT).show();
                                         }
                                     }
 
                                     @Override
                                     public void onFailure(Call<Void> call, Throwable t) {
-                                        Toast.makeText(getApplicationContext(), "Checkout error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+
                                     }
                                 });
+
                             }
 
                             @Override

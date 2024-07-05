@@ -32,12 +32,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
+public class OrderAdapterUser extends RecyclerView.Adapter<OrderAdapterUser.OrderViewHolder> {
 
     private Context context;
     private List<OrderResponse> orderList;
 
-    public OrderAdapter(Context context, List<OrderResponse> orderList) {
+    public OrderAdapterUser(Context context, List<OrderResponse> orderList) {
         this.context = context;
         this.orderList = orderList;
     }
@@ -160,44 +160,19 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     private void showDetailPopup(OrderResponse order) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
-        View popupView = inflater.inflate(R.layout.popup_order_detail, null);
+        View popupView = inflater.inflate(R.layout.pop_order_detail_user, null);
         builder.setView(popupView);
 
         //TextView orderCodeTextView = popupView.findViewById(R.id.orderCodeTextView);
         RecyclerView orderDetailsRecyclerView = popupView.findViewById(R.id.orderDetailsRecyclerView);
 
-       // orderCodeTextView.setText("Order Code: " + order.getOrderCode());
+        // orderCodeTextView.setText("Order Code: " + order.getOrderCode());
 
         // Setup RecyclerView for order details
         orderDetailsRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         OrderDetailAdapter orderDetailAdapter = new OrderDetailAdapter(context, order.getOrderDetails());
         orderDetailsRecyclerView.setAdapter(orderDetailAdapter);
 
-        ImageButton confirmButton = popupView.findViewById(R.id.confirmButton);
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createOrder(order.getOrderId());
-            }
-        });
-
-        ImageButton rejectButton = popupView.findViewById(R.id.rejectButton);
-        rejectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rejectOrder(order.getOrderId());
-            }
-        });
-
-
-
-            if ("Pending".equals(order.getStatus())) {
-                confirmButton.setVisibility(View.VISIBLE);
-                rejectButton.setVisibility(View.VISIBLE);
-            } else {
-                confirmButton.setVisibility(View.GONE);
-                rejectButton.setVisibility(View.GONE);
-            }
 
         builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
             @Override
@@ -210,63 +185,5 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         dialog.show();
     }
 
-    private void createOrder(int orderId) {
-
-        OrderResponse order;
-        OrderService orderService = ApiClient.getRetrofitInstance().create(OrderService.class);
-
-        Call<Void> call = orderService.confirmOrder(orderId);
-
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-
-                    Toast.makeText(context, "Order confirmed successfully", Toast.LENGTH_SHORT).show();
-                    Log.d("OrderAdminActivity", "Order confirmed");
-
-                    ((OrderAdminActivity) context).callPendingOrdersApi("");
-
-                } else {
-                    Log.d("OrderAdminActivity", "Order fail " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Log.d("OrderAdminActivity", "Order failure");
-            }
-        });
-    }
-
-
-    private void rejectOrder(int orderId) {
-
-        OrderResponse order;
-        OrderService orderService = ApiClient.getRetrofitInstance().create(OrderService.class);
-
-        Call<Void> call = orderService.rejectOrder(orderId);
-
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-
-                    Toast.makeText(context, "Order Rejected successfully", Toast.LENGTH_SHORT).show();
-                    Log.d("OrderAdminActivity", "Order Rejected");
-
-                    ((OrderAdminActivity) context).callPendingOrdersApi("");
-
-                } else {
-                    Log.d("OrderAdminActivity", "Order Rejected fail " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Log.d("OrderAdminActivity", "Order Rejected failure");
-            }
-        });
-    }
-
 }
+
