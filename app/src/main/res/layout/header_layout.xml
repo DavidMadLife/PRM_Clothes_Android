@@ -9,15 +9,12 @@
     android:background="@drawable/bordered_background">
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/editTextSearch"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:layout_weight="1"
-        android:queryHint="Search"
-        android:padding="12dp"
-        android:background="@drawable/rounded_edit_text"
-        android:drawablePadding="8dp"
-        app:iconifiedByDefault="false" />
+        android:id="@+id/searchView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        app:queryHint="Search Products" />
+
 
     <!--<ImageView
         android:id="@+id/imageSearch"

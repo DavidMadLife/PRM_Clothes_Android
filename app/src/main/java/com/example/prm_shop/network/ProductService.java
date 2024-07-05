@@ -2,6 +2,7 @@ package com.example.prm_shop.network;
 
 import com.example.prm_shop.models.request.ProductRequest;
 import com.example.prm_shop.models.response.ProductResponse;
+import com.example.prm_shop.models.response.SearchResponse;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ProductService {
+
     @GET("products")
     Call<List<ProductResponse>> getProducts();
 
@@ -37,7 +39,17 @@ public interface ProductService {
     );
 
     @GET("products/search")
-    Call<List<ProductResponse>> getProducts(@Query("pageIndex") int pageIndex, @Query("pageSize") int pageSize);
+    Call<SearchResponse> searchProducts(
+            @Query("productName") String productName,
+            @Query("providerId") Integer providerId,
+            @Query("unitPrice") Double unitPrice,
+            @Query("weight") Double weight,
+            @Query("categoryId") Integer categoryId,
+            @Query("pageIndex") int pageIndex,
+            @Query("pageSize") int pageSize
+    );
+
+
 
     @Multipart
     @PUT("products/{id}")

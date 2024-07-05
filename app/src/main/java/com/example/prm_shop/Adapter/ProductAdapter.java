@@ -1,6 +1,5 @@
 package com.example.prm_shop.Adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -34,6 +33,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         notifyDataSetChanged();
     }
 
+    public void addProducts(List<ProductResponse> products) {
+        int startPosition = productList.size();
+        productList.addAll(products);
+        notifyItemRangeInserted(startPosition, products.size());
+    }
+
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,8 +46,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return new ProductViewHolder(view);
     }
 
-    // Inside ProductAdapter
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         ProductResponse product = productList.get(position);
@@ -50,24 +53,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.productPrice.setText("Price: " + product.getUnitPrice() + "VND");
         Picasso.get().load(product.getImg()).into(holder.productImage);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, ProductDetailActivity.class);
-                intent.putExtra("product", product);
-                context.startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ProductDetailActivity.class);
+            intent.putExtra("product", product);
+            context.startActivity(intent);
         });
     }
-
-
 
     @Override
     public int getItemCount() {
         return productList == null ? 0 : productList.size();
     }
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder {
+    public static class ProductViewHolder extends RecyclerView.ViewHolder {
 
         TextView productName;
         TextView productPrice;
