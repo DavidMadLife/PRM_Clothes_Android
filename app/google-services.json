@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "179638871865",
+    "project_id": "chatapp-ef113",
+    "storage_bucket": "chatapp-ef113.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179638871865:android:ae25e289431f476e9c2ae8",
+        "android_client_info": {
+          "package_name": "com.example.prm_shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHbcbnW8NeTDHpbJs8LRpi6ExEFUUbN8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
