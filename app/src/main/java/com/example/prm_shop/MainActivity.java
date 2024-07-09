@@ -48,6 +48,8 @@ import com.example.prm_shop.models.response.TokenResponse;
 import com.example.prm_shop.network.ApiClient;
 import com.example.prm_shop.network.MemberService;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 
@@ -114,13 +116,25 @@ public class MainActivity extends AppCompatActivity {
                         JWT jwt = new JWT(token);
                         String userId = jwt.getClaim("memberId").asString(); // Ensure "memberId" is used correctly
                         String roleId = jwt.getClaim("role").asString();
+                        String username = jwt.getClaim("name").asString();
 
                         if (userId != null && !userId.isEmpty()) {
                             int userID = Integer.parseInt(userId);
 
                             // Lưu token vào SharedPreferences
                             saveToken(token);
-                            addDataToFirestore(userId);
+                            saveUserId(userId);
+                            saveRoleId(roleId);
+                            saveUsername(username);
+
+                            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    String fcmToken = task.getResult();
+                                    saveTokenToFirestore(userId, fcmToken, roleId, username);
+                                } else {
+                                    Log.e("MainActivity", "Fetching FCM token failed", task.getException());
+                                }
+                            });
 
                             // Chuyển sang UserActivity
                             Intent intent = new Intent(MainActivity.this, ProductActivity.class);
@@ -154,20 +168,42 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    private void addDataToFirestore(String userId){
+    private void saveUserId(String userId) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("userId", userId);
+        editor.apply();
+    }
+
+    private void saveRoleId(String roleId) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("roleId", roleId);
+        editor.apply();
+    }
+
+    private void saveUsername(String username) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", username);
+        editor.apply();
+    }
+
+
+    private void saveTokenToFirestore(String userId, String fcmToken, String roleId, String name) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         HashMap<String, Object> data = new HashMap<>();
         data.put("userId", userId);
+        data.put("fcmToken", fcmToken);
+        data.put("roleId", roleId);
+        data.put("name", name);
 
         db.collection("users")
-                .add(data)
-                .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(getApplicationContext(), "Data added successfully", Toast.LENGTH_SHORT).show();
-                })
-                .addOnFailureListener(e -> {
-                    String errorMessage = "Error adding data: " + e.getMessage();
-                    Toast.makeText(getApplicationContext(), "Error adding data", Toast.LENGTH_SHORT).show();
-                    Log.e("MainActivity", errorMessage, e);
-                });
+                .document(userId) // Sử dụng userId làm ID của tài liệu
+                .set(data, SetOptions.merge()) // Sử dụng SetOptions.merge() để cập nhật dữ liệu nếu tài liệu đã tồn tại
+                .addOnSuccessListener(documentReference -> Log.d("MainActivity", "User data saved successfully"))
+                .addOnFailureListener(e -> Log.e("MainActivity", "Error saving user data", e));
     }
+
+
 }

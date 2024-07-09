@@ -1,6 +1,7 @@
 package com.example.prm_shop.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
@@ -36,13 +37,8 @@ public class BaseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-            if (this instanceof UserActivity) {
-                imageUser.setImageResource(R.drawable.user_colors);
-                imageUser.setImageTintList(createColorStateList(R.color.purple)); // Set tint color to purple when in CartActivity
-            } else {
-                imageUser.setImageResource(R.drawable.user_normal);
-                imageUser.setImageTintList(createColorStateList(R.color.black)); // Set initial tint color to purple
-            }
+            imageUser.setImageResource(R.drawable.user_normal);
+            imageUser.setImageTintList(createColorStateList(R.color.black));
         }
 
         ImageView imageHome = findViewById(R.id.imageHome);
@@ -54,14 +50,8 @@ public class BaseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
-            if (this instanceof ProductActivity) {
-                imageHome.setImageResource(R.drawable.home_product_colors);
-                imageHome.setImageTintList(createColorStateList(R.color.purple)); // Set tint color to purple when in CartActivity
-            } else {
-                imageHome.setImageResource(R.drawable.home_product);
-                imageHome.setImageTintList(createColorStateList(R.color.black)); // Set initial tint color to purple
-            }// Set initial tint color to purple
+            imageHome.setImageResource(R.drawable.home_product);
+            imageHome.setImageTintList(createColorStateList(R.color.black));
         }
 
         ImageView imageMap = findViewById(R.id.imageMap);
@@ -86,15 +76,8 @@ public class BaseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
-            // Set image resource based on current activity
-            if (this instanceof CartActivity) {
-                imageViewCart.setImageResource(R.drawable.cart_colors);
-                imageViewCart.setImageTintList(createColorStateList(R.color.purple)); // Set tint color to purple when in CartActivity
-            } else {
-                imageViewCart.setImageResource(R.drawable.shopping_cart);
-                imageViewCart.setImageTintList(createColorStateList(R.color.black)); // Set initial tint color to purple
-            }
+            imageViewCart.setImageResource(R.drawable.shopping_cart);
+            imageViewCart.setImageTintList(createColorStateList(R.color.black));
         }
 
         ImageView imageMessage = findViewById(R.id.imageViewMessage);
@@ -102,14 +85,12 @@ public class BaseActivity extends AppCompatActivity {
             imageMessage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(BaseActivity.this, MessageActivity.class);
+                    Intent intent = new Intent(BaseActivity.this, AdminChatActivity.class);
                     startActivity(intent);
                 }
             });
         }
     }
-
-
 
     private ColorStateList createColorStateList(int colorRes) {
         int[][] states = new int[][]{

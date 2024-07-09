@@ -89,6 +89,10 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".activities.ChatActivity"></activity>
+        <activity android:name=".activities.AdminChatActivity"></activity>
+
+
     </application>
 
 </manifest>

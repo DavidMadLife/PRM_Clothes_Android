@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header layout -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:background="@color/light_gray"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- Icon người dùng -->
+        <ImageView
+            android:id="@+id/ic_user"
+            android:layout_width="52dp"
+            android:layout_height="53dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_user"
+            />
+
+    </LinearLayout>
+
+    <!-- RecyclerView để hiển thị danh sách chat -->
+
+    <!-- Footer layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewChat"
+        android:layout_width="match_parent"
+        android:layout_height="545dp"
+        android:layout_above="@id/linearLayoutMessage"
+        android:layout_below="@id/headerLayout"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="3dp"
+        android:clipToPadding="false"
+        android:padding="8dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="53dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/editTextMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type a message"
+            android:padding="8dp"
+            android:background="@drawable/bordered_background" />
+
+        <ImageView
+            android:id="@+id/buttonSendMessage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_send" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/footerLayout"
+        layout="@layout/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

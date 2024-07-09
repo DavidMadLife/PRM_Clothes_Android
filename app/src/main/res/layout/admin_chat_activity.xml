@@ -1,0 +1,51 @@
+<!-- admin_chat_activity.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+
+    <!-- RecyclerView để hiển thị danh sách user -->
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/iconChat"
+            android:layout_width="95dp"
+            android:layout_height="57dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="104dp"
+            android:paddingEnd="8dp"
+            android:src="@drawable/ic_message" />
+
+        <TextView
+            android:id="@+id/textViewHeaderTitle"
+            android:layout_width="75dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="-16dp"
+            android:layout_toEndOf="@id/iconChat"
+            android:text="Chat"
+            android:textColor="@android:color/black"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewUsers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/headerLayout"
+        android:padding="8dp" />
+
+    <!-- Footer layout -->
+    <include
+        android:id="@+id/footerLayout"
+        layout="@layout/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
