@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.auth0.android.jwt.JWT;
 import com.example.prm_shop.MainActivity;
 import com.example.prm_shop.R;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserActivity extends BaseActivity {
 
@@ -120,6 +122,14 @@ public class UserActivity extends BaseActivity {
                         editor.remove("TOKEN");
                         editor.apply();
 
+                        // Remove FCM token from Firestore
+                        String token = getToken();
+                        if (!token.isEmpty()) {
+                            JWT jwt = new JWT(token);
+                            String userId = jwt.getClaim("memberId").asString();
+                            removeTokenFromFirestore(userId);
+                        }
+
                         // Redirect to MainActivity
                         Intent intent = new Intent(UserActivity.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear back stack
@@ -135,4 +145,20 @@ public class UserActivity extends BaseActivity {
                 });
         builder.create().show();
     }
+
+    private void removeTokenFromFirestore(String userId) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("users")
+                .whereEqualTo("userId", userId)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                        document.getReference().delete()
+                                .addOnSuccessListener(aVoid -> Log.d("UserActivity", "FCM token removed from Firestore"))
+                                .addOnFailureListener(e -> Log.e("UserActivity", "Error removing FCM token from Firestore", e));
+                    }
+                })
+                .addOnFailureListener(e -> Log.e("UserActivity", "Error querying Firestore for FCM token removal", e));
+    }
+
 }

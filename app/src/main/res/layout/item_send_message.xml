@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_gravity="end"
+    android:gravity="end"> <!-- Đặt gravity cho LinearLayout -->
+
+    <TextView
+        android:id="@+id/textViewMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sent message"
+        android:textColor="@android:color/black"
+        android:background="@drawable/rounded_edittext_background1"
+        android:padding="8dp"
+        android:layout_gravity="end" /> <!-- Đặt layout_gravity cho TextView -->
+
+    <TextView
+        android:id="@+id/textViewCreatedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10:00"
+        android:textSize="10sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_gravity="end" /> <!-- Đặt layout_gravity cho TextView -->
+</LinearLayout>
