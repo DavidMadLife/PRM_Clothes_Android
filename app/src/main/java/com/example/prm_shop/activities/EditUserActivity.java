@@ -84,7 +84,7 @@ public class EditUserActivity extends FooterActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(EditUserActivity.this, "User updated successfully", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK);
-                    finish();  // Close the EditUserActivity and return success result
+                    /*finish();  */// Close the EditUserActivity and return success result
                 } else {
                     try {
                         String errorBody = response.errorBody().string();
