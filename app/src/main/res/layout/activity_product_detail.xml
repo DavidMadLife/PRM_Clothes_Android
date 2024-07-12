@@ -10,7 +10,6 @@
     <!-- Header -->
     <include layout="@layout/header_layout" />
 
-    <!-- Main content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -27,8 +26,10 @@
                 android:id="@+id/product_image"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+
                 android:scaleType="centerCrop"
                 android:layout_marginBottom="16dp" />
+
 
             <TextView
                 android:id="@+id/product_name"
@@ -36,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:textStyle="bold"
+
                 android:paddingTop="8dp"
                 android:textColor="@color/black" />
 
@@ -59,16 +61,20 @@
                 android:id="@+id/product_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:paddingTop="8dp"
                 android:layout_marginBottom="16dp" />
 
+
             <TextView
                 android:id="@+id/size_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:text="Size: "
+
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingTop="8dp" />
@@ -78,8 +84,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+
                 android:paddingTop="4dp"
                 android:layout_marginBottom="16dp">
+
 
                 <RadioButton
                     android:id="@+id/size_s"
@@ -117,6 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Quantity: "
+
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingTop="8dp" />
@@ -137,6 +146,7 @@
                     android:textSize="18sp"
                     android:background="@drawable/button_background" />
 
+
                 <TextView
                     android:id="@+id/quantity_text_view"
                     android:layout_width="wrap_content"
@@ -154,6 +164,7 @@
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:background="@drawable/button_background" />
+
             </LinearLayout>
 
             <Button
@@ -167,8 +178,6 @@
                 android:textColor="@color/white" />
         </LinearLayout>
     </ScrollView>
-
-    <!-- Footer -->
     <include layout="@layout/footer_layout" />
 
 </LinearLayout>

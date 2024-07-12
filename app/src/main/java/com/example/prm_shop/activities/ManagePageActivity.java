@@ -86,7 +86,9 @@ public class ManagePageActivity extends FooterActivity {
         tvTotalProducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle click, start new Activity if needed
+                Intent intent = new Intent(ManagePageActivity.this, ProductManageActivity.class);
+                startActivity(intent);
+                finish();  // Optional: Finish current activity if needed
             }
         });
 
