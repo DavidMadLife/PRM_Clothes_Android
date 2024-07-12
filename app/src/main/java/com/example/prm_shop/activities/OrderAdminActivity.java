@@ -35,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OrderAdminActivity extends BaseActivity {
+public class OrderAdminActivity extends FooterActivity {
 
     private Spinner spinnerActions;
     private Button btnPrev, btnNext;

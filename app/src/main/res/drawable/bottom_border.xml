@@ -1,0 +1,5 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/> <!-- Màu nền trắng -->
+    <size android:height="2dp"/> <!-- Chiều cao của viền dưới -->
+    <stroke android:width="2dp" android:color="#DDDDDD"/> <!-- Màu và độ rộng của viền dưới -->
+</shape>

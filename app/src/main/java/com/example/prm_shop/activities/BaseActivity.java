@@ -1,7 +1,6 @@
 package com.example.prm_shop.activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
@@ -37,8 +36,13 @@ public class BaseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-            imageUser.setImageResource(R.drawable.user_normal);
-            imageUser.setImageTintList(createColorStateList(R.color.black));
+            if (this instanceof UserActivity) {
+                imageUser.setImageResource(R.drawable.user_colors);
+                imageUser.setImageTintList(createColorStateList(R.color.purple));
+            } else {
+                imageUser.setImageResource(R.drawable.user_normal);
+                imageUser.setImageTintList(createColorStateList(R.color.black));
+            }
         }
 
         ImageView imageHome = findViewById(R.id.imageHome);
@@ -50,8 +54,14 @@ public class BaseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-            imageHome.setImageResource(R.drawable.home_product);
-            imageHome.setImageTintList(createColorStateList(R.color.black));
+
+            if (this instanceof ProductActivity) {
+                imageHome.setImageResource(R.drawable.home_product_colors);
+                imageHome.setImageTintList(createColorStateList(R.color.purple));
+            } else {
+                imageHome.setImageResource(R.drawable.home_product);
+                imageHome.setImageTintList(createColorStateList(R.color.black));
+            }
         }
 
         ImageView imageMap = findViewById(R.id.imageMap);
@@ -76,8 +86,15 @@ public class BaseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-            imageViewCart.setImageResource(R.drawable.shopping_cart);
-            imageViewCart.setImageTintList(createColorStateList(R.color.black));
+
+            // Set image resource based on current activity
+            if (this instanceof CartActivity) {
+                imageViewCart.setImageResource(R.drawable.cart_colors);
+                imageViewCart.setImageTintList(createColorStateList(R.color.purple));
+            } else {
+                imageViewCart.setImageResource(R.drawable.shopping_cart);
+                imageViewCart.setImageTintList(createColorStateList(R.color.black));
+            }
         }
 
         ImageView imageMessage = findViewById(R.id.imageViewMessage);
@@ -89,8 +106,17 @@ public class BaseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+            if (this instanceof AdminChatActivity) {
+                imageMessage.setImageResource(R.drawable.bubble_chat_color);
+                imageMessage.setImageTintList(createColorStateList(R.color.purple));
+            } else {
+                imageMessage.setImageResource(R.drawable.bubble_chat);
+                imageMessage.setImageTintList(createColorStateList(R.color.black));
+            }
         }
     }
+
+
 
     private ColorStateList createColorStateList(int colorRes) {
         int[][] states = new int[][]{
