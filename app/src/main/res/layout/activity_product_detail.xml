@@ -4,153 +4,169 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <!-- Header -->
     <include layout="@layout/header_layout" />
 
     <!-- Main content -->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
         android:padding="16dp"
         tools:context=".activities.ProductDetailActivity">
 
-        <ImageView
-            android:id="@+id/product_image"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:id="@+id/product_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:paddingTop="8dp" />
-
-        <TextView
-            android:id="@+id/product_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:paddingTop="4dp" />
-
-        <TextView
-            android:id="@+id/product_unitInStock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:paddingTop="4dp" />
-
-        <TextView
-            android:id="@+id/product_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:paddingTop="8dp" />
-
-        <TextView
-            android:id="@+id/size_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Size"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:paddingTop="8dp" />
-
-        <RadioGroup
-            android:id="@+id/size_radio_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="4dp">
-
-            <RadioButton
-                android:id="@+id/size_s"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="S" />
-
-            <RadioButton
-                android:id="@+id/size_m"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="M" />
-
-            <RadioButton
-                android:id="@+id/size_l"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="L" />
-
-            <RadioButton
-                android:id="@+id/size_xl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="XL" />
-
-            <RadioButton
-                android:id="@+id/size_xxl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="XXL" />
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/quantity_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Số Lượng"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:paddingTop="8dp" />
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/decrement_button"
-                android:layout_width="67dp"
-                android:layout_height="wrap_content"
-                android:text="-"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/product_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="16dp" />
 
             <TextView
-                android:id="@+id/quantity_text_view"
+                android:id="@+id/product_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:paddingTop="4dp" />
+
+            <TextView
+                android:id="@+id/product_unitInStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:paddingTop="4dp" />
+
+            <TextView
+                android:id="@+id/product_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:paddingTop="8dp"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/size_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Size: "
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp" />
+
+            <RadioGroup
+                android:id="@+id/size_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="4dp"
+                android:layout_marginBottom="16dp">
+
+                <RadioButton
+                    android:id="@+id/size_s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="S" />
+
+                <RadioButton
+                    android:id="@+id/size_m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M" />
+
+                <RadioButton
+                    android:id="@+id/size_l"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L" />
+
+                <RadioButton
+                    android:id="@+id/size_xl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XL" />
+
+                <RadioButton
+                    android:id="@+id/size_xxl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XXL" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/quantity_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quantity: "
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:text="1"
-                android:textSize="18sp" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <Button
+                    android:id="@+id/decrement_button"
+                    android:layout_width="67dp"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:background="@drawable/button_background" />
+
+                <TextView
+                    android:id="@+id/quantity_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="1"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/increment_button"
+                    android:layout_width="67dp"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:background="@drawable/button_background" />
+            </LinearLayout>
 
             <Button
-                android:id="@+id/increment_button"
-                android:layout_width="67dp"
+                android:id="@+id/add_to_cart_button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="+"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:layout_marginTop="16dp"
+                android:text="Add to Cart"
+                android:textSize="18sp"
+                android:background="@drawable/button_background"
+                android:textColor="@color/white" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/add_to_cart_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Add to Cart" />
-    </LinearLayout>
+    </ScrollView>
 
     <!-- Footer -->
     <include layout="@layout/footer_layout" />

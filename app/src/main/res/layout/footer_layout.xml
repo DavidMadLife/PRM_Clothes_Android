@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:padding="8dp"
     android:gravity="center_vertical"
-    android:background="@drawable/bordered_background">
+    android:background="@drawable/bottom_border">
 
     <ImageView
         android:id="@+id/imageHome"
@@ -26,7 +26,7 @@
         android:id="@+id/imageMap"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:src="@drawable/placeholder"
+        android:src="@drawable/placeholders"
         android:layout_weight="1"
         android:layout_marginEnd="8dp" />
 

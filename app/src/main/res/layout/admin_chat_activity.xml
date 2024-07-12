@@ -1,44 +1,51 @@
-<!-- admin_chat_activity.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <!-- Header -->
-
-    <!-- RecyclerView để hiển thị danh sách user -->
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/light_gray"
-        android:padding="8dp">
+        android:background="#F0F0F0"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:elevation="4dp"
+        android:gravity="center_vertical">
 
         <ImageView
             android:id="@+id/iconChat"
-            android:layout_width="95dp"
-            android:layout_height="57dp"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="104dp"
-            android:paddingEnd="8dp"
-            android:src="@drawable/ic_message" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_message"
+            android:contentDescription="Chat Icon"
+            android:layout_marginEnd="8dp" />
 
         <TextView
             android:id="@+id/textViewHeaderTitle"
-            android:layout_width="75dp"
-            android:layout_height="59dp"
-            android:layout_marginStart="-16dp"
-            android:layout_toEndOf="@id/iconChat"
-            android:text="Chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chats"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
-    </RelativeLayout>
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
 
+    <!-- RecyclerView để hiển thị danh sách user -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUsers"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_below="@id/headerLayout"
-        android:padding="8dp" />
+        android:layout_above="@id/footerLayout"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        tools:listitem="@layout/item_user_chat"/>
 
     <!-- Footer layout -->
     <include
@@ -46,6 +53,5 @@
         layout="@layout/footer_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
-
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
